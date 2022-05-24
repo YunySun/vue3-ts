@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "serve": "webpack serve --config ./webpack.config.js",
+    "build": "webpack --mode production --config ./webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,29 @@
   },
   "homepage": "https://github.com/YunySun/vue3-ts#readme",
   "devDependencies": {
+    "@babel/core": "^7.18.0",
+    "@babel/preset-env": "^7.18.0",
+    "@vue/compiler-sfc": "^3.2.36",
+    "babel-loader": "^8.2.5",
+    "core-js": "^3.22.6",
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
+    "sass": "^1.52.1",
+    "sass-loader": "^13.0.0",
+    "style-loader": "^3.3.1",
+    "vue-loader": "^17.0.0",
     "webpack": "^5.72.1",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "Android >= 4.4",
+    "iOS >= 5"
+  ],
+  "dependencies": {
+    "vue": "^3.2.33"
   }
 }
