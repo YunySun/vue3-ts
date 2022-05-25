@@ -6,6 +6,20 @@ const { VueLoaderPlugin } = require('vue-loader');
 // 3 babel转换成es5 npm i -D @babel/core @babel/preset-env babel-loader
 // 4 安装vue 3.x npm i -S vue@next npm i -D vue-loader@next @vue/compiler-sfc
 // 5 npm i -D style-loader css-loader sass-loader sass
+// 6 分离css npm i -D mini-css-extract-plugin
+// 8 css3兼容处理 npm i -D postcss-loader postcss postcss-preset-env
+// 9 响应式单位处理
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const isProd = process.env.NODE_ENV === 'production';
+const prodPlugins = []
+
+// 判断开发环境还是生产环境 添加插件
+if (isProd) {
+  prodPlugins.push(new MiniCssExtractPlugin({
+    filename: 'css/[name].[contenthash:8].css',
+  }))
+}
+console.log(process.env.NODE_ENV, isProd);
 
 module.exports = {
   // 1 入口
@@ -14,16 +28,29 @@ module.exports = {
   output: {
     filename: 'js/[name].[contenthash:10].js',
     path: resolve(__dirname, 'build'),
-    publicPath: './',
+    publicPath: isProd ? './' : '/',
     clean: true
   },
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
         oneOf: [
           {
             test: /\.s[ac]ss$/i,
-            use: ['style-loader', 'css-loader', 'sass-loader']
+            use: [
+              isProd ? MiniCssExtractPlugin.loader : 'style-loader',
+              'css-loader',
+              {
+                loader: 'postcss-loader',
+                options: {
+                  postcssOptions: {
+                    plugins: ['postcss-preset-env']
+                  }
+                }
+              },
+              'sass-loader'
+            ]
           },
           // 图片和iconfont
           {
@@ -74,9 +101,27 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html'
     }),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    ...prodPlugins
   ],
   mode: 'development',
+  // 7 固定模块单独打包
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all'
+        }
+      }
+    },
+    usedExports: true, // 标记未使用的到处模块 便于移除
+    sideEffects: true, // 移除无用的模块
+    // splitChunks: { // 将调用的依赖分离出来
+    //   chunks: "all"
+    // }
+  },
   // 2  npm i -D webpack-dev-server 实现浏览器热更新和运行在浏览器上显示
   devServer: {
     static: {

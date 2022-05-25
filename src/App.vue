@@ -12,10 +12,20 @@
 
 <style lang="scss">
 
-#app {
-  div  {
-    color: red;
-  }
+#app{
+    div{
+        color: purple;
+        display: inline-block;
+        animation: rotating 6s linear infinite;
+    }
+}
+@keyframes rotating{
+    from{
+        transform: rotate(0);
+    }
+    to{
+        transform: rotate(360deg);
+    }
 }
 
 </style>
