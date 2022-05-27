@@ -8,7 +8,15 @@ const { VueLoaderPlugin } = require('vue-loader');
 // 5 npm i -D style-loader css-loader sass-loader sass
 // 6 分离css npm i -D mini-css-extract-plugin
 // 8 css3兼容处理 npm i -D postcss-loader postcss postcss-preset-env
-// 9 响应式单位处理
+/** 9 vue引入ts
+ * npm i -S vue-class-component vue-property-decorator 我去掉了
+ * npm i -D ts-loader typescript tslint tslint-loader tslint-config-standard
+ * vue-class-component 强化vue组件 使用ts装饰器 增强vue组件
+ * vue-property-decorator 在vue-class-component上增强更多的结合Vue特性的装饰器
+ * ts-loader ts为webpack提供ts-loader 其实就是为了让webpack识别.ts .tsx文件
+ * tslint-loader 和 tslint .ts .tsx文件约束代码格式
+ * tslint-config-standard tslint配置standard风格的约束
+ */
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const isProd = process.env.NODE_ENV === 'production';
 const prodPlugins = []
@@ -23,7 +31,7 @@ console.log(process.env.NODE_ENV, isProd);
 
 module.exports = {
   // 1 入口
-  entry: './src/main.js',
+  entry: './src/main.ts',
   // 1 出口
   output: {
     filename: 'js/[name].[contenthash:10].js',
@@ -32,6 +40,12 @@ module.exports = {
     clean: true
   },
   devtool: 'inline-source-map',
+  resolve: {
+    extensions: ['.js', '.vue', '.json', '.ts'], // 为了之后引入不添加后缀
+    alias: {
+      '@': resolve('src')
+    }
+  },
   module: {
     rules: [
       {
@@ -86,6 +100,28 @@ module.exports = {
                 }]]
               }
             }
+          },
+          {
+            test: /\.tsx?$/,
+            exclude: /node_modules/,
+            use: [
+              {
+                loader: 'babel-loader',
+                options: {
+                  presets: [['@babel/preset-env', {
+                    useBuiltIns: 'usage',
+                    corejs: 3
+                  }]]
+                }
+              },
+              {
+                loader: 'ts-loader',
+                options: { appendTsSuffixTo: [/\.vue$/] }
+              },
+              {
+                loader: 'tslint-loader'
+              }
+            ]
           }
         ]
       },
