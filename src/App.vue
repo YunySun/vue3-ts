@@ -17,6 +17,9 @@ export default defineComponent({
       this.count += 1;
     });
   },
+  setup() {
+
+  },
 });
 </script>
 

@@ -46,7 +46,7 @@ const { VueLoaderPlugin } = require('vue-loader');
         "source.fixAll.eslint": true,
     }
 
-    tslint-loader
+    tslint tslint-loader
  */
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
