@@ -1,49 +1,58 @@
 <template>
-  <div>Hello Webpack!{{ count }}</div>
+  <button @click="increment">Count is: {{ count }}</button>
 </template>
 
 <script lang='ts'>
-import { defineComponent } from 'vue';
+import { ref, onMounted } from 'vue';
 
-export default defineComponent({
-  data() {
+export default {
+  setup() {
+    const count = ref(0);
+
+    function increment() {
+      count.value += 1;
+    }
+
+    // 生命周期钩子
+    onMounted(() => {
+      console.log(`The initial count is ${count.value}`);
+    });
+
     return {
-      count: 0,
+      count,
+      increment,
     };
   },
-  created() {
-    console.log('created');
-  },
-  mounted() {
-    console.log('mounted');
-    // const result = this.count.split('');
-    setTimeout(() => {
-      this.count += 1;
-    });
-  },
-  setup() {
-    console.log('setup');
-    // this._api
-    //     .postAjaxPack("listmodules", { pageconfig: "index" })
-    //     .then
-  },
-});
+  // data() {
+  //   return {
+  //     count: 0,
+  //   };
+  // },
+  // methods: {
+  //   increase() {
+  //     this.count += 1;
+  //   },
+  // },
+  // mounted() {
+  //   console.log(`The initial count is ${this.count}`);
+  // },
+};
 </script>
 
 <style lang="scss">
-#app {
-  div {
-    color: purple;
-    display: inline-block;
-    animation: rotating 6s linear infinite;
-  }
-}
-@keyframes rotating {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+// #app {
+//   button {
+//     color: purple;
+//     display: inline-block;
+//     animation: rotating 6s linear infinite;
+//   }
+// }
+// @keyframes rotating {
+//   from {
+//     transform: rotate(0);
+//   }
+//   to {
+//     transform: rotate(360deg);
+//   }
+// }
 </style>

@@ -4,4 +4,4 @@ import App from './App.vue';
 // 创建并且挂载实例
 const app = createApp(App);
 
-createApp(App).mount('#app');
+app.mount('#app');
