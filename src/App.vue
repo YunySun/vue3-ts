@@ -11,14 +11,21 @@ export default defineComponent({
       count: 0,
     };
   },
+  created() {
+    console.log('created');
+  },
   mounted() {
+    console.log('mounted');
     // const result = this.count.split('');
     setTimeout(() => {
       this.count += 1;
     });
   },
   setup() {
-
+    console.log('setup');
+    // this._api
+    //     .postAjaxPack("listmodules", { pageconfig: "index" })
+    //     .then
   },
 });
 </script>
