@@ -1,58 +1,52 @@
 <template>
-  <button @click="increment">Count is: {{ count }}</button>
+  <div>
+    <button @click="increment">Count is: {{ count }}</button>
+    <span>{{ foo + 1 }}</span>
+  </div>
 </template>
 
-<script lang='ts'>
-import { ref, onMounted } from 'vue';
+<script>
+import { ref } from 'vue';
 
 export default {
   setup() {
     const count = ref(0);
+    console.log(count);
+    console.log(count.value);
+
+    count.value += 1;
+    console.log(count.value);
+
+    const objectRef = ref({ count: 0 });
+
+    // 这是响应式的替换
+    objectRef.value = { count: 1 };
+
+    const obj = {
+      foo: ref(1),
+      bar: ref(2),
+    };
+
+    function callSomeFunction(foo) {
+      const newFoo = foo;
+      newFoo.value = 4;
+      console.log(obj.foo);
+    }
+
+    callSomeFunction(obj.foo);
 
     function increment() {
       count.value += 1;
     }
 
-    // 生命周期钩子
-    onMounted(() => {
-      console.log(`The initial count is ${count.value}`);
-    });
-
     return {
       count,
       increment,
+      ...obj,
     };
   },
-  // data() {
-  //   return {
-  //     count: 0,
-  //   };
-  // },
-  // methods: {
-  //   increase() {
-  //     this.count += 1;
-  //   },
-  // },
-  // mounted() {
-  //   console.log(`The initial count is ${this.count}`);
-  // },
 };
 </script>
 
 <style lang="scss">
-// #app {
-//   button {
-//     color: purple;
-//     display: inline-block;
-//     animation: rotating 6s linear infinite;
-//   }
-// }
-// @keyframes rotating {
-//   from {
-//     transform: rotate(0);
-//   }
-//   to {
-//     transform: rotate(360deg);
-//   }
-// }
 </style>
