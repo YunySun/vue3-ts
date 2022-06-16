@@ -47,6 +47,15 @@ const { VueLoaderPlugin } = require('vue-loader');
     }
 
     tslint tslint-loader
+
+    // @/components报错 npm i -D eslint-import-resolver-webpack eslint-plugin-import
+    settings: {
+    'import/resolver': {
+      webpack: {
+        config: path.join(__dirname, './build/webpack.base.config.js')
+      }
+    }
+  }
  */
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
