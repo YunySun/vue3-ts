@@ -1,83 +1,44 @@
 <template>
   <div class="wrapper">
-    <div class="container" :class="{active: isActive, 'text-danger': err}">ref</div>
-    <div class="container" :class="classObject">reactive</div>
-    <div class="container" :class="classObject2">computed</div>
-    <div class="container" :class="[isActive ? activeClass : '', errorClass]">Arr Class</div>
-    <my-component class="container"
-      :class="{active: isActive, 'text-danger': err}"
-      :style="{ fontSize: (fontSize + 'px')}"
-    />
-    <div class="container" :style="styleObject" >reactive Style</div>
-    <div class="container" :style="[baseStyles, overridingStyles]" >Arr Style</div>
+    <div class="container">
+      <input ref="inputRef" />
+      <ul>
+        <li v-for="(item, index) in list" ref="itemRefs" :key="index">{{ item }}</li>
+      </ul>
+      <input type="text" :ref="(el) => { inputFuncRef = el }" />
+      <my-component ref="myComponentRef" :title="title" @change-name="title = 'Jane'" />
+    </div>
   </div>
 </template>
 
 <script>
-import { ref, reactive, computed } from 'vue';
-import MyComponent from '@/components/MyComponent';
+import { ref, onMounted } from 'vue';
+import MyComponent from './components/myComponent.vue';
 
 export default {
-  components: { MyComponent },
   setup() {
-    const isActive = ref(true);
-    const err = ref(null);
-    const classObject = reactive({
-      active: true,
-      'text-danger': false,
+    const inputRef = ref(null);
+    const itemRefs = ref([]);
+    const list = ref(['zhao', 'qian', 'sun']);
+    const inputFuncRef = ref(null);
+    const myComponentRef = ref(null);
+    const title = ref('Mick');
+
+    onMounted(() => {
+      inputRef.value.focus();
+      console.log('itemRefs: ', itemRefs.value);
+      console.log('inputFuncRef: ', inputFuncRef.value);
+      console.log('myComponentRef: ', myComponentRef.value);
     });
-
-    const classObject2 = computed(() => ({
-      active: isActive.value && !err.value,
-      'text-danger': err.value && err.value.type === 'fatal',
-    }));
-
-    // 绑定数组
-    const activeClass = ref('active');
-    const errorClass = ref('text-danger');
-
-    // 绑定内联样式
-    const activeColor = ref('lightblue');
-    const fontSize = ref(30);
-
-    const styleObject = reactive({
-      fontSize: '24px',
-      color: 'pink',
-    });
-
-    const baseStyles = reactive({ fontSize: '16px', color: 'red' });
-    const overridingStyles = reactive({ backgroundColor: 'lightgreen' });
-
     return {
-      isActive,
-      err,
-      classObject,
-      classObject2,
-      activeClass,
-      errorClass,
-      activeColor,
-      fontSize,
-      styleObject,
-      baseStyles,
-      overridingStyles,
+      inputRef,
+      list,
+      itemRefs,
+      inputFuncRef,
+      myComponentRef,
+      title,
     };
   },
+  components: { MyComponent },
 };
 </script>
-
-<style scoped lang="scss">
-.wrapper {
-  .container {
-    width: 100px;
-    height: 100px;
-    background-color: lightcoral;
-    &.active {
-      background-color: lightblue;
-    }
-
-    &.text-danger {
-      color: red;
-    }
-  }
-}
-</style>
