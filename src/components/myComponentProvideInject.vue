@@ -7,6 +7,9 @@
     <input type="text" :value="modelValue" @input="emitValue">
   </p>
   <slot :text="name"></slot>
+  <div @click="changeMessage('newMessage')">
+    message： {{ message }}
+  </div>
 </div>
 </template>
 
@@ -24,6 +27,10 @@ export default {
   setup(props, ctx) {
     const name = ref(props.title);
     const a = ref(1);
+    // const message = inject('message');
+    // console.log(message);
+    // provide inject
+    const { message, changeMessage } = inject('messageAction');
 
     const value = computed({
       get() {
@@ -52,7 +59,7 @@ export default {
       value,
       emitValue,
       message,
-      messageAction,
+      changeMessage,
     };
   },
 };

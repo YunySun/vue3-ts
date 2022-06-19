@@ -1,42 +1,33 @@
 <template>
   <div class="wrapper">
-    <div class="container">
-      <input ref="inputRef" />
-      <ul>
-        <li v-for="(item, index) in list" ref="itemRefs" :key="index">{{ item }}</li>
-      </ul>
-      <input type="text" :ref="(el) => { inputFuncRef = el }" />
-      <my-component ref="myComponentRef" :title="title" @change-name="title = 'Jane'" />
-    </div>
+    {{ count }}
+    <my-component title="mike" v-model.capitalize="count" v-slot="slotProps">{{ slotProps.text }}</my-component>
   </div>
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
-import MyComponent from './components/myComponent.vue';
+import { ref, provide, defineAsyncComponent } from 'vue';
+// 异步引入组件
+const MyComponent = defineAsyncComponent(() => import('@/components/myComponentProvideInject.vue'));
+// import MyComponent from '@/components/myComponentProvideInject.vue';
 
 export default {
   setup() {
-    const inputRef = ref(null);
-    const itemRefs = ref([]);
-    const list = ref(['zhao', 'qian', 'sun']);
-    const inputFuncRef = ref(null);
-    const myComponentRef = ref(null);
-    const title = ref('Mick');
+    const count = ref(1);
+    const message = ref('hello');
+    // provide('message', 'hello');
 
-    onMounted(() => {
-      inputRef.value.focus();
-      console.log('itemRefs: ', itemRefs.value);
-      console.log('inputFuncRef: ', inputFuncRef.value);
-      console.log('myComponentRef: ', myComponentRef.value);
+    function changeMessage(val) {
+      message.value = val;
+    }
+
+    provide('messageAction', {
+      message,
+      changeMessage,
     });
+
     return {
-      inputRef,
-      list,
-      itemRefs,
-      inputFuncRef,
-      myComponentRef,
-      title,
+      count,
     };
   },
   components: { MyComponent },
