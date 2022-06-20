@@ -1,5 +1,5 @@
 import ajax from 'axios';
-import Qs from 'querystring';
+import Qs from 'qs';
 
 // 默认请求地址
 // console.log($baseUrl)
@@ -21,7 +21,7 @@ instance.interceptors.response.use(
   (response) => {
     // Indicator.close();
     if (response.status === 200) {
-      return Promise.resolve(response);
+      return Promise.resolve(response.data);
     }
     return Promise.reject(response);
   },
@@ -43,7 +43,7 @@ function getAjaxPack(api, data) {
     parameter = Object.assign(parameter, data);
   }
   return instance.get(
-    `${url}?${Qs.stringify(parameter)}`,
+    `${api}?${Qs.stringify(parameter)}`,
   );
 }
 
@@ -52,7 +52,7 @@ function postAjaxPack(api, data, params) {
     parameter = Object.assign(parameter, params);
   }
   return instance.post(
-    `${url}?${Qs.stringify(parameter)}`,
+    `${api}?${Qs.stringify(parameter)}`,
     Qs.stringify(data),
   );
 }
