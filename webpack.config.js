@@ -48,14 +48,16 @@ const { VueLoaderPlugin } = require('vue-loader');
 
     tslint tslint-loader
 
-    // @/components报错 npm i -D eslint-import-resolver-webpack eslint-plugin-import
+    // alias @/components报错 npm i -D eslint-plugin-import eslint-import-resolver-alias
     settings: {
-    'import/resolver': {
-      webpack: {
-        config: path.join(__dirname, './build/webpack.base.config.js')
-      }
+      'import/resolver': {
+        alias: {
+          map: [
+            ['@', './src'],
+          ],
+        },
+      },
     }
-  }
  */
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -85,7 +87,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.json', '.ts'], // 为了之后引入不添加后缀
     alias: {
-      '@': resolve('src'),
+      '@': resolve(__dirname, 'src'),
     },
   },
   module: {

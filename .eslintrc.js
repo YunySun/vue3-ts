@@ -5,6 +5,7 @@ module.exports = {
   },
   extends: [
     'plugin:vue/essential',
+    'plugin:import/recommended',
     'airbnb-base',
   ],
   parserOptions: {
@@ -33,5 +34,16 @@ module.exports = {
         ],
       },
     ],
+    'import/prefer-default-export': 'off',
+  },
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [
+          ['@', './src'],
+        ],
+        extensions: ['.js', '.vue', '.json', '.ts'],
+      },
+    },
   },
 };
