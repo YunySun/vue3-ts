@@ -57,7 +57,7 @@ export default {
       // 可以编写访问store的函数
       double: (store) => store.counter * 2,
       // 可以正常读取'this' 但是无法正常写入
-      magicValue(store) {
+      magicValue() {
         // console.log(store, this.counter, this.double);
         return this.myOwnName + this.double;
       },

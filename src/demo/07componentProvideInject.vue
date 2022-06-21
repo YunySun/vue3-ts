@@ -8,7 +8,7 @@
 <script>
 import { ref, provide, defineAsyncComponent } from 'vue';
 // 异步引入组件
-const MyComponent = defineAsyncComponent(() => import('@/components/myComponentProvideInject.vue'));
+const MyComponent = defineAsyncComponent(() => import('@/components/myComponentProvideInject'));
 // import MyComponent from '@/components/myComponentProvideInject.vue';
 
 export default {

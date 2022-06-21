@@ -9,12 +9,12 @@
 </template>
 
 <script>
-import { useAxios } from '@/uses/useAxios';
+import { useRequest } from '@/uses/useRequest';
 
 export default {
   name: 'app',
   setup() {
-    const { response, error } = useAxios('listmodules', {
+    const { response, error } = useRequest('listmodules', {
       pageconfig: 'index',
     });
 

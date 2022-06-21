@@ -2,8 +2,8 @@ import { createApp } from 'vue';
 // npm i -S pinia
 import { createPinia } from 'pinia';
 import App from './App.vue';
-import http from './assets/js/http';
-import router from './router';
+import http from '@/assets/js/http';
+import router from '@/router';
 
 const { postAjaxPack, getAjaxPack } = http;
 // 创建并且挂载实例

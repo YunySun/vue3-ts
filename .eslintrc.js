@@ -35,6 +35,15 @@ module.exports = {
       },
     ],
     'import/prefer-default-export': 'off',
+    'import/extensions': [ // 忽略后缀报错
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+      },
+    ],
   },
   settings: {
     'import/resolver': {
@@ -42,7 +51,6 @@ module.exports = {
         map: [
           ['@', './src'],
         ],
-        extensions: ['.js', '.vue', '.json', '.ts'],
       },
     },
   },
