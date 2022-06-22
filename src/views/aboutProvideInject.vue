@@ -26,7 +26,7 @@ export default defineComponent({
 
     // provide('message', 'hello');
 
-    function changeMessage(val) {
+    function changeMessage(val: string) {
       message.value = val
     }
 

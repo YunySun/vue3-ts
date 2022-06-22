@@ -35,10 +35,18 @@ instance.interceptors.response.use(
 
 const url = 'wis_version=1.2.9&wis_device=04543F1160-7F58-4961-9E20-012ACC053645&wis_usercode=e3a52gDNp6JnM9gA1my8fV6ooC1HqF1YNHd7hPGW9mhXuq05%2BknTAPkGaYvejYlkfqWpJLAYc2385JmVgkwMo6pH%2B7ES&wis_sex=nan&wis_channel=appstore&action=get&imtest=1';
 
+interface ClientParameters {
+  wis_version: string,
+  wis_device: string,
+  wis_usercode: string,
+  wis_sex: string,
+  wis_channel: string,
+}
+
 let parameter = Qs.parse(url);
 console.log(parameter);
 
-function getAjaxPack(api, data) {
+function getAjaxPack(api: string, data) {
   if (data) {
     parameter = Object.assign(parameter, data);
   }
@@ -47,7 +55,7 @@ function getAjaxPack(api, data) {
   );
 }
 
-function postAjaxPack(api, data, params) {
+function postAjaxPack(api: string, data, params): Promise<void> {
   if (params) {
     parameter = Object.assign(parameter, params);
   }
