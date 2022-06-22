@@ -3,10 +3,16 @@ module.exports = {
     browser: true,
     es2021: true,
   },
+  parser: 'vue-eslint-parser',
   extends: [
-    'plugin:vue/essential',
+    'plugin:vue/vue3-essential',
+    'eslint:recommended',
+    // '@vue/typescript/recommended',
     'plugin:import/recommended',
     'airbnb-base',
+    'plugin:prettier/recommended',
+    'prettier/@typescript-eslint',
+    'plugin:@typescript-eslint/recommended',
   ],
   parserOptions: {
     ecmaVersion: 'latest',
@@ -18,6 +24,8 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'linebreak-style': ['off', 'windows'],
     'no-param-reassign': [
       'error',
@@ -35,15 +43,16 @@ module.exports = {
       },
     ],
     'import/prefer-default-export': 'off',
-    'import/extensions': [ // 忽略后缀报错
+    'import/extensions': [ // 1 忽略后缀报错 2个都需要配置
       'error',
-      'ignorePackages',
+      'always',
       {
         js: 'never',
         jsx: 'never',
         ts: 'never',
       },
     ],
+    '@typescript-eslint/no-var-requires': 0,
   },
   settings: {
     'import/resolver': {
@@ -51,6 +60,7 @@ module.exports = {
         map: [
           ['@', './src'],
         ],
+        extensions: ['.js', '.vue', '.json', '.ts'], // 2 忽略后缀报错
       },
     },
   },

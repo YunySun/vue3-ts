@@ -1,7 +1,7 @@
 // axios.js
 import { getCurrentInstance, ref } from 'vue';
 
-export function useAxios(url, data) {
+export function useRequest(url, data) {
   const error = ref(null);
   const response = ref(null);
 

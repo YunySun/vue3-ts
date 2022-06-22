@@ -46,7 +46,7 @@ const { VueLoaderPlugin } = require('vue-loader');
         "source.fixAll.eslint": true,
     }
 
-    tslint tslint-loader
+    tslint tslint-loader删除
 
     // alias @/components报错 npm i -D eslint-plugin-import eslint-import-resolver-alias
     settings: {
@@ -58,6 +58,11 @@ const { VueLoaderPlugin } = require('vue-loader');
         },
       },
     }
+ */
+
+/** 安装prettier
+ *  npm i -D prettier eslint-config-prettier eslint-plugin-prettier
+ *  eslint-config-prettier 这个插件是当eslint和prettier配置冲突时优先prettier
  */
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -161,9 +166,6 @@ module.exports = {
               {
                 loader: 'ts-loader',
                 options: { appendTsSuffixTo: [/\.vue$/] },
-              },
-              {
-                loader: 'tslint-loader',
               },
             ],
           },

@@ -8,20 +8,21 @@
   </div>
 </template>
 
-<script>
-import { useRequest } from '@/uses/useRequest';
+<script lang="ts">
+import { useRequest } from '@/uses/useRequest'
+import { defineComponent } from 'vue'
 
-export default {
-  name: 'app',
+export default defineComponent({
+  name: 'useRequestPage',
   setup() {
     const { response, error } = useRequest('listmodules', {
       pageconfig: 'index',
-    });
+    })
 
     return {
       error,
       response,
-    };
+    }
   },
-};
+})
 </script>

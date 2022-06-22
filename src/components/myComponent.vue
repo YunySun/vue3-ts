@@ -12,7 +12,7 @@
 
 <script>
 import {
-  ref, onUpdated, computed, inject,
+  ref, onUpdated, computed,
 } from 'vue';
 
 export default {
