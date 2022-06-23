@@ -100,6 +100,21 @@ module.exports = {
       {
         oneOf: [
           {
+            test: /\.css$/i,
+            use: [
+              isProd ? MiniCssExtractPlugin.loader : 'style-loader',
+              'css-loader',
+              {
+                loader: 'postcss-loader',
+                options: {
+                  postcssOptions: {
+                    plugins: ['postcss-preset-env'],
+                  },
+                },
+              },
+            ],
+          },
+          {
             test: /\.s[ac]ss$/i,
             use: [
               isProd ? MiniCssExtractPlugin.loader : 'style-loader',

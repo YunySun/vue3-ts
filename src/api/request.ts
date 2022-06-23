@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-14 16:38:24
  * @LastEditors: 李昶
- * @LastEditTime: 2022-06-23 16:43:59
+ * @LastEditTime: 2022-06-23 22:22:00
  */
 import ajax from 'axios';
 import Qs from 'qs';
@@ -48,20 +48,4 @@ instance.interceptors.response.use(
     return Promise.reject(error);
   },
 );
-
-function getAjaxPack(api: string, params) {
-  return instance.get(
-    api,
-    { params }
-  );
-}
-
-function postAjaxPack(api: string, data, params) {
-  return instance.post(
-    api,
-    Qs.stringify(data),
-    { params }
-  );
-}
-
 export default instance;
