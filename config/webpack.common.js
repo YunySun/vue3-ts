@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-05-24 09:18:19
  * @LastEditors: 李昶
- * @LastEditTime: 2022-06-24 17:15:35
+ * @LastEditTime: 2022-06-24 17:22:57
  */
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -27,11 +27,17 @@ module.exports = {
     path: paths.appDist,
     clean: true,
   },
+  // // 指定webpack需要解析的目录范围
+  // modules: [
+  //   'node_modules',
+  //   paths.appSrc
+  // ],
   resolve: {
     extensions: ['.js', '.vue', '.json', '.ts'], // 为了之后引入不添加后缀
     alias: {
       '@': paths.appSrc,
     },
+    symlinks: false, // 如果不使用symlinks
   },
   module: {
     rules: [
