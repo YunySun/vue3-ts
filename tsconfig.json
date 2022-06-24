@@ -41,6 +41,8 @@
         ],
         "sourceMap": true,
         "pretty": true,
-        "types": ["element-plus/global"]
+        // "types": [
+        //     "element-plus/global"
+        // ]
     }
 }

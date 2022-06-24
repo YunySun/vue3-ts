@@ -100,22 +100,7 @@ module.exports = {
       {
         oneOf: [
           {
-            test: /\.css$/i,
-            use: [
-              isProd ? MiniCssExtractPlugin.loader : 'style-loader',
-              'css-loader',
-              {
-                loader: 'postcss-loader',
-                options: {
-                  postcssOptions: {
-                    plugins: ['postcss-preset-env'],
-                  },
-                },
-              },
-            ],
-          },
-          {
-            test: /\.s[ac]ss$/i,
+            test: /\.(c|sc|sa)ss$/i,
             use: [
               isProd ? MiniCssExtractPlugin.loader : 'style-loader',
               'css-loader',
@@ -225,7 +210,7 @@ module.exports = {
       directory: resolve(__dirname, 'build'),
     },
     compress: true,
-    port: 8080,
+    port: 8081,
     open: true,
     hot: true,
   },

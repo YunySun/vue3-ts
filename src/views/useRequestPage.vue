@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-21 09:34:34
  * @LastEditors: 李昶
- * @LastEditTime: 2022-06-23 23:45:24
+ * @LastEditTime: 2022-06-24 10:14:19
 -->
 <template>
   <div class="wrapper">
@@ -12,7 +12,7 @@
       <!-- <pre>{{ response }}</pre> -->
       <div class="bookstore-wpp">
         <ul>
-          <li v-for="(item, index) in response">
+          <li v-for="item in response" :key="item.m_id">
             <pre>{{ item }}</pre>
           </li>
         </ul>
@@ -25,8 +25,6 @@
 <script lang="ts">
 import { useRequest } from '@/uses/useRequest'
 import { defineComponent } from 'vue'
-
-// :key="`bkw_${index}`"
 
 export default defineComponent({
   name: 'useRequestPage',
