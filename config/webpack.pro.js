@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-05-24 09:18:08
  * @LastEditors: 李昶
- * @LastEditTime: 2022-06-24 17:25:48
+ * @LastEditTime: 2022-06-25 23:07:15
  */
 const { merge } = require('webpack-merge');
 const Common = require('./webpack.common')
@@ -32,6 +32,13 @@ module.exports = merge(Common, {
                     plugins: ['postcss-preset-env'],
                   },
                 },
+              },
+              {
+                loader: 'thread-loader',
+                options: {
+                  workers: require('os').cpus() - 1,
+                  workerParallelJobs: 2
+                }
               },
               'sass-loader',
             ],

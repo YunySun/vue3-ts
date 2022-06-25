@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-05-24 09:18:19
  * @LastEditors: 李昶
- * @LastEditTime: 2022-06-24 17:22:57
+ * @LastEditTime: 2022-06-25 23:19:36
  */
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -67,7 +67,6 @@ module.exports = {
           {
             test: /\.(js|mjs|ts|tsx)$/,
             exclude: /node_modules/,
-            // include: resolve(__dirname, '../src'),
             use: [
               {
                 loader: 'esbuild-loader',
@@ -96,7 +95,8 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        include: paths.appSrc
       },
     ],
   },

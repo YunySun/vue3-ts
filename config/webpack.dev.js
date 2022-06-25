@@ -1,3 +1,10 @@
+/*
+ * @Description: 一个比较废柴的前端开发
+ * @Author: 李昶
+ * @Date: 2022-06-25 15:56:31
+ * @LastEditors: 李昶
+ * @LastEditTime: 2022-06-25 23:05:55
+ */
 const { merge } = require('webpack-merge')
 const Common = require('./webpack.common')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -25,6 +32,13 @@ const devWebpackConfig = merge(Common, {
                     plugins: ['postcss-preset-env'],
                   },
                 },
+              },
+              {
+                loader: 'thread-loader',
+                options: {
+                  workers: require('os').cpus() - 1,
+                  workerParallelJobs: 2
+                }
               },
               'sass-loader',
             ],
