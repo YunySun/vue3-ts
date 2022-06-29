@@ -3,11 +3,10 @@
  * @Author: 李昶
  * @Date: 2022-06-25 15:56:31
  * @LastEditors: 李昶
- * @LastEditTime: 2022-06-29 16:53:16
+ * @LastEditTime: 2022-06-29 22:59:33
  */
 const { merge } = require('webpack-merge')
 const Common = require('./webpack.common')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const devWebpackConfig = merge(Common, {
   mode: 'development',
@@ -40,10 +39,6 @@ const devWebpackConfig = merge(Common, {
       }
     ]
   },
-  plugins: [
-    // 打包体积分析
-    new BundleAnalyzerPlugin()
-  ],
 })
 
 module.exports = devWebpackConfig

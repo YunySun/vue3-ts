@@ -3,11 +3,12 @@
  * @Author: 李昶
  * @Date: 2022-05-24 09:18:08
  * @LastEditors: 李昶
- * @LastEditTime: 2022-06-29 17:17:34
+ * @LastEditTime: 2022-06-29 22:59:37
  */
 const { merge } = require('webpack-merge');
 const Common = require('./webpack.common')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = merge(Common, {
   mode: 'production',
@@ -43,7 +44,9 @@ module.exports = merge(Common, {
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash:8].css',
-    })
+    }),
+    // 打包体积分析
+    new BundleAnalyzerPlugin()
   ],
   optimization: {
     runtimeChunk: true, // 最小化entry chunk
