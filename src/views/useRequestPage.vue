@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-21 09:34:34
  * @LastEditors: 李昶
- * @LastEditTime: 2022-06-24 10:14:19
+ * @LastEditTime: 2022-06-28 15:54:26
 -->
 <template>
   <div class="wrapper">
@@ -12,7 +12,7 @@
       <!-- <pre>{{ response }}</pre> -->
       <div class="bookstore-wpp">
         <ul>
-          <li v-for="item in response" :key="item.m_id">
+          <li v-for="item in response" :key="item.m_id" @click="handleItem(item)">
             <pre>{{ item }}</pre>
           </li>
         </ul>
@@ -31,9 +31,14 @@ export default defineComponent({
   setup() {
     const { response, error } = useRequest({ pageconfig: 'index' })
 
+    function handleItem(item) {
+      console.log(item)
+    }
+
     return {
       error,
       response,
+      handleItem,
     }
   },
 })

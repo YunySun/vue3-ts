@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-25 15:56:31
  * @LastEditors: 李昶
- * @LastEditTime: 2022-06-25 23:05:55
+ * @LastEditTime: 2022-06-29 14:49:48
  */
 const { merge } = require('webpack-merge')
 const Common = require('./webpack.common')
@@ -13,7 +13,7 @@ const devWebpackConfig = merge(Common, {
   mode: 'development',
   output: {
     filename: 'js/[name].bundle.js',
-    publicPath: '/'
+    publicPath: '../'
   },
   devtool: 'eval-cheap-module-source-map',
   module: {
@@ -24,23 +24,16 @@ const devWebpackConfig = merge(Common, {
             test: /\.(c|sc|sa)ss$/i,
             use: [
               'style-loader',
-              'css-loader',
-              {
-                loader: 'postcss-loader',
-                options: {
-                  postcssOptions: {
-                    plugins: ['postcss-preset-env'],
-                  },
-                },
-              },
-              {
-                loader: 'thread-loader',
-                options: {
-                  workers: require('os').cpus() - 1,
-                  workerParallelJobs: 2
-                }
-              },
-              'sass-loader',
+              'css-loader'
+              // {
+              //   loader: 'postcss-loader',
+              //   options: {
+              //     postcssOptions: {
+              //       plugins: ['postcss-preset-env'],
+              //     },
+              //   },
+              // },
+              // 'sass-loader',
             ],
           },
         ]

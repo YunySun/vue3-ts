@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "set NODE_ENV=development&&webpack serve --config ./webpack.config.js",
-    "serve": "webpack serve --config ./config/webpack.dev.js",
+    "serve": "webpack-dev-server --config ./config/webpack.dev.js",
     "build": "webpack --mode production --config ./config/webpack.pro.js"
   },
   "repository": {
@@ -73,5 +73,6 @@
     "qs": "^6.10.5",
     "vue": "^3.2.33",
     "vue-router": "^4.0.16"
-  }
+  },
+  "sideEffects": false
 }

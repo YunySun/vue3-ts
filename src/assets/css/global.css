@@ -1,0 +1,98 @@
+html, body, div, span,
+h1, h2, h3, h4, h5, h6, p,
+a,
+em, img,
+b, i,
+ul, ol, li,
+form, label,
+header, footer {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    font-weight: normal;
+    word-wrap:break-word;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+    user-select: none;
+}
+
+body {
+    font-size:  14px;
+    color: #222222;
+}
+
+html,body{
+    height: 100%;
+}
+
+/*取消字体默认样式*/
+
+span, i, em, b, a, strong {
+    font-style: normal;
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: normal;
+}
+
+/*取消按钮和input的默认样式*/
+button, input {
+    border: none;
+    outline: none;
+    padding: 0;
+}
+
+button {
+    text-align: center;
+}
+
+
+/* 移动端去除a button input 标签高亮边框 */
+a, button, input {
+    -webkit-tap-highlight-color:rgba(255,0,0,0);
+}
+
+/* HTML5 display-role reset for older browsers */
+footer, header {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+
+ol, ul, li {
+    list-style: none;
+}
+
+input, textarea {
+    outline: none;
+}
+
+span {
+    vertical-align: middle;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+/* input-placeholder默认样式 */
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color:#ABABB8;
+}
+input:-moz-placeholder, textarea:-moz-placeholder {
+    color:#ABABB8;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color:#ABABB8;
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    color:#ABABB8;
+}
