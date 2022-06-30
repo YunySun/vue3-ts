@@ -3,10 +3,11 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-06-29 16:59:45
+ * @LastEditTime: 2022-06-30 22:33:53
 -->
 <template>
   <div class="app-wrapper">
+    <el-button type="primary">按钮</el-button>
     <router-view />
   </div>
 </template>
@@ -19,8 +20,16 @@ export default defineComponent({
 })
 </script>
 
-<style>
+<style lang="scss">
 .app-wrapper {
   color: red;
+
+  .app-test {
+    background-color: purple;
+  }
+}
+
+.app-container {
+  background-color: green;
 }
 </style>

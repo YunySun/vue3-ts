@@ -3,12 +3,20 @@
  * @Author: 李昶
  * @Date: 2022-05-24 09:18:08
  * @LastEditors: 李昶
- * @LastEditTime: 2022-06-29 22:59:37
+ * @LastEditTime: 2022-06-30 22:52:52
  */
+const { resolve } = require('path');
 const { merge } = require('webpack-merge');
 const Common = require('./webpack.common')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
+
+const paths = {
+  appSrc: resolve(__dirname, '../src'),
+  appDist: resolve(__dirname, '../build'),
+}
 
 module.exports = merge(Common, {
   mode: 'production',
@@ -46,7 +54,7 @@ module.exports = merge(Common, {
       filename: 'css/[name].[contenthash:8].css',
     }),
     // 打包体积分析
-    new BundleAnalyzerPlugin()
+    new BundleAnalyzerPlugin(),
   ],
   optimization: {
     runtimeChunk: true, // 最小化entry chunk
@@ -65,6 +73,33 @@ module.exports = merge(Common, {
     minimize: true, // 压缩后删除不被使用的代码
     splitChunks: { // 将调用的依赖分离出来
       chunks: "all"
-    }
+    },
+    minimizer: [
+      new CssMinimizerPlugin({
+        parallel: 4,
+      }),// 加入后导致js文件不压缩 所以加TerserPlugin
+      new TerserPlugin({
+        parallel: 4,
+        terserOptions: {
+          parse: {
+            ecma: 8,
+          },
+          compress: {
+            ecma: 5,
+            warnings: false,
+            comparisons: false,
+            inline: 2,
+          },
+          mangle: {
+            safari10: true,
+          },
+          output: {
+            ecma: 5,
+            comments: false,
+            ascii_only: true,
+          },
+        },
+      }),
+    ],
   },
 })
