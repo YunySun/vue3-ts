@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-07-04 23:46:22
+ * @LastEditTime: 2022-07-19 23:00:02
  */
 import { createRouter, createWebHashHistory } from 'vue-router';
 
@@ -14,7 +14,7 @@ export const routes = [
     component: () => import('@/views/home.vue'),
     meta: {
       title: '首页',
-    }
+    },
   },
   {
     path: '/provide',

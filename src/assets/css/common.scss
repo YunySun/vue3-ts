@@ -1,0 +1,18 @@
+// 盒子模型
+.flex-b,
+.flex-b-c {
+  display: flex;
+}
+
+.flex-b,
+.flex-b-c {
+  justify-content: space-between;
+}
+
+.flex-b-c {
+  align-items: center;
+}
+
+.flex-1 {
+  flex: 1;
+}

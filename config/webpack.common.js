@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-05-24 09:18:19
  * @LastEditors: 李昶
- * @LastEditTime: 2022-06-30 22:32:26
+ * @LastEditTime: 2022-07-19 22:22:08
  */
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -81,7 +81,7 @@ module.exports = {
                 },
               },
               {
-                loader: 'babel-loader?cacheDirectory=true',
+                loader: 'babel-loader', // ?cacheDirectory=true 会时不时的报错
                 options: {
                   presets: [['@babel/preset-env', {
                     useBuiltIns: 'usage',
