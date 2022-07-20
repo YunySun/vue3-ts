@@ -3,46 +3,55 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-07-19 23:00:02
+ * @LastEditTime: 2022-07-20 16:38:03
  */
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
+import commonLayout from './layout/commonLayout.vue';
 
-export const routes = [
-  {
-    path: '/',
-    name: 'homePageView',
-    component: () => import('@/views/home.vue'),
-    meta: {
-      title: '首页',
+export const routes: Array<RouteRecordRaw> = [
+    {
+        path: '/',
+        name: 'homePageView',
+        component: () => import('@/views/home.vue'),
+        meta: {
+            title: '首页',
+        },
     },
-  },
-  {
-    path: '/provide',
-    name: 'aboutProvideInject',
-    component: () => import('@/views/aboutProvideInject.vue'),
-    meta: {
-      title: 'Vue Provide Inject',
-    }
-  },
-  {
-    path: '/state',
-    name: 'aboutState',
-    component: () => import('@/views/aboutState.vue'),
-    meta: {
-      title: 'Vue State',
-    }
-  },
-  {
-    path: '/useRequest',
-    name: 'useRequestPage',
-    component: () => import('@/views/useRequestPage.vue'),
-    meta: {
-      title: 'Request',
-    }
-  },
+    {
+        path: '/vue',
+        name: 'vue',
+        component: commonLayout,
+        meta: { title: 'Vue' },
+        children: [
+            {
+                path: 'state',
+                name: 'aboutState',
+                component: () => import('@/views/aboutState.vue'),
+                meta: {
+                    title: 'State',
+                },
+            },
+            {
+                path: 'provide',
+                name: 'aboutProvideInject',
+                component: () => import('@/views/aboutProvideInject.vue'),
+                meta: {
+                    title: 'Provide Inject',
+                },
+            },
+        ],
+    },
+    {
+        path: '/useRequest',
+        name: 'useRequestPage',
+        component: () => import('@/views/useRequestPage.vue'),
+        meta: {
+            title: 'Request',
+        },
+    },
 ];
 
 export default createRouter({
-  history: createWebHashHistory(),
-  routes,
+    history: createWebHashHistory(),
+    routes,
 });

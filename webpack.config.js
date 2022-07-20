@@ -72,9 +72,11 @@ const prodPlugins = [];
 
 // 判断开发环境还是生产环境 添加插件
 if (isProd) {
-  prodPlugins.push(new MiniCssExtractPlugin({
-    filename: 'css/[name].[contenthash:8].css',
-  }));
+  prodPlugins.push(
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash:8].css',
+    })
+  );
 }
 // console.log(process.env.NODE_ENV, isProd);
 
@@ -143,10 +145,15 @@ module.exports = {
             use: {
               loader: 'babel-loader',
               options: {
-                presets: [['@babel/preset-env', {
-                  useBuiltIns: 'usage',
-                  corejs: 3, // 3.3 修改babel配置 报错 少一个数组中括号
-                }]],
+                presets: [
+                  [
+                    '@babel/preset-env',
+                    {
+                      useBuiltIns: 'usage',
+                      corejs: 3, // 3.3 修改babel配置 报错 少一个数组中括号
+                    },
+                  ],
+                ],
               },
             },
           },
@@ -157,10 +164,15 @@ module.exports = {
               {
                 loader: 'babel-loader',
                 options: {
-                  presets: [['@babel/preset-env', {
-                    useBuiltIns: 'usage',
-                    corejs: 3,
-                  }]],
+                  presets: [
+                    [
+                      '@babel/preset-env',
+                      {
+                        useBuiltIns: 'usage',
+                        corejs: 3,
+                      },
+                    ],
+                  ],
                 },
               },
               {
