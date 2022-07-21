@@ -3,13 +3,13 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-07-20 14:54:56
+ * @LastEditTime: 2022-07-21 12:14:18
 -->
 <template>
     <div class="app-wrapper flex-b">
         <div class="app-side-menu">
             <el-menu
-                default-active="homePageView"
+                :default-active="routerPath"
                 class="el-menu-vertical-demo"
                 @open="handleOpen"
                 @close="handleClose"
@@ -23,8 +23,18 @@
                             </el-icon>
                             <span>{{ route.meta.title }}</span>
                         </template>
+                        <el-menu-item
+                            :index="route.path + '/' + child.path"
+                            v-for="child in route.children"
+                            :key="child.name"
+                        >
+                            <el-icon>
+                                <component :is="'location'" />
+                            </el-icon>
+                            <span>{{ child.meta.title }}</span>
+                        </el-menu-item>
                     </el-sub-menu>
-                    <el-menu-item :index="route.name" v-else>
+                    <el-menu-item :index="route.path" :route="route.path" v-else>
                         <el-icon>
                             <component :is="'location'" />
                         </el-icon>
@@ -40,13 +50,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import { routes } from './router';
 
 export default defineComponent({
     name: 'app',
     setup() {
         const routesRef = ref(routes);
+        const router = useRouter();
+        const route = useRoute();
+        console.log(route.path);
+        const routerPath = ref<string>('/');
         const handleOpen = (key: string, keyPath: string[]) => {
             console.log(key, keyPath);
         };
@@ -54,7 +69,11 @@ export default defineComponent({
             console.log(key, keyPath);
         };
 
-        return { handleOpen, handleClose, routesRef };
+        watch(route, (value) => {
+            console.log('watch: ', value.path);
+        });
+
+        return { routerPath, handleOpen, handleClose, routesRef };
     },
 });
 </script>
