@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-03 17:21:38
+ * @LastEditTime: 2022-08-03 22:27:16
 -->
 <template>
     <div class="app-wrapper flex-b">
@@ -13,7 +13,7 @@
                     <el-sub-menu v-if="route.children && route.children.length > 0" :index="route.path">
                         <template #title>
                             <el-icon>
-                                <component :is="'location'" />
+                                <component :is="route.meta.icon" />
                             </el-icon>
                             <span>{{ route.meta.title }}</span>
                         </template>
@@ -22,15 +22,12 @@
                             v-for="child in route.children"
                             :key="child.name"
                         >
-                            <el-icon>
-                                <component :is="'location'" />
-                            </el-icon>
                             <span>{{ child.meta.title }}</span>
                         </el-menu-item>
                     </el-sub-menu>
                     <el-menu-item :index="route.path" :route="route.path" v-else>
                         <el-icon>
-                            <component :is="'location'" />
+                            <component :is="route.meta.icon" />
                         </el-icon>
                         <span>{{ route.meta.title }}</span>
                     </el-menu-item>

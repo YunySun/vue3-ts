@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-03 17:18:16
+ * @LastEditTime: 2022-08-03 22:27:39
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import commonLayout from './layout/commonLayout.vue';
@@ -15,6 +15,7 @@ export const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/home.vue'),
         meta: {
             title: '首页',
+            icon: 'HomeFilled',
         },
     },
     {
@@ -22,7 +23,7 @@ export const routes: Array<RouteRecordRaw> = [
         name: 'vue',
         redirect: '/vue/state',
         component: commonLayout,
-        meta: { title: 'Vue' },
+        meta: { title: 'Vue', icon: 'Menu' },
         children: [
             {
                 path: 'state',
@@ -48,6 +49,7 @@ export const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/useRequestPage.vue'),
         meta: {
             title: 'Request',
+            icon: 'connection',
         },
     },
 ];
