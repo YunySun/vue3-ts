@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-07-20 16:38:03
+ * @LastEditTime: 2022-08-03 17:18:16
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import commonLayout from './layout/commonLayout.vue';
@@ -20,6 +20,7 @@ export const routes: Array<RouteRecordRaw> = [
     {
         path: '/vue',
         name: 'vue',
+        redirect: '/vue/state',
         component: commonLayout,
         meta: { title: 'Vue' },
         children: [

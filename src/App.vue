@@ -3,20 +3,14 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-07-21 12:14:18
+ * @LastEditTime: 2022-08-03 17:21:38
 -->
 <template>
     <div class="app-wrapper flex-b">
         <div class="app-side-menu">
-            <el-menu
-                :default-active="routerPath"
-                class="el-menu-vertical-demo"
-                @open="handleOpen"
-                @close="handleClose"
-                @select="handleOpen"
-            >
+            <el-menu :default-active="routerPath" class="el-menu-vertical-demo" @select="handleOpen">
                 <template v-for="route in routesRef" :key="route.name">
-                    <el-sub-menu v-if="route.children && route.children.length > 0">
+                    <el-sub-menu v-if="route.children && route.children.length > 0" :index="route.path">
                         <template #title>
                             <el-icon>
                                 <component :is="'location'" />
@@ -62,18 +56,16 @@ export default defineComponent({
         const route = useRoute();
         console.log(route.path);
         const routerPath = ref<string>('/');
-        const handleOpen = (key: string, keyPath: string[]) => {
-            console.log(key, keyPath);
-        };
-        const handleClose = (key: string, keyPath: string[]) => {
-            console.log(key, keyPath);
+        const handleOpen = (key: string) => {
+            router.push(key);
         };
 
         watch(route, (value) => {
             console.log('watch: ', value.path);
+            routerPath.value = value.path;
         });
 
-        return { routerPath, handleOpen, handleClose, routesRef };
+        return { routerPath, handleOpen, routesRef };
     },
 });
 </script>
