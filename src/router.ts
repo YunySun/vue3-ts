@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-03 22:27:39
+ * @LastEditTime: 2022-08-04 16:41:34
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import commonLayout from './layout/commonLayout.vue';
@@ -25,6 +25,22 @@ export const routes: Array<RouteRecordRaw> = [
         component: commonLayout,
         meta: { title: 'Vue', icon: 'Menu' },
         children: [
+            {
+                path: 'reactive',
+                name: 'reactivePage',
+                component: () => import('@/views/reactivePage.vue'),
+                meta: {
+                    title: 'Reactive',
+                },
+            },
+            {
+                path: 'ref',
+                name: 'refPage',
+                component: () => import('@/views/refPage.vue'),
+                meta: {
+                    title: 'Ref',
+                },
+            },
             {
                 path: 'state',
                 name: 'aboutState',

@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-05-24 09:18:19
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-03 22:13:17
+ * @LastEditTime: 2022-08-04 17:11:40
  */
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -35,7 +35,7 @@ module.exports = {
     //   paths.appSrc
     // ],
     resolve: {
-        extensions: ['.js', '.vue', '.json', '.ts'], // 为了之后引入不添加后缀
+        extensions: ['.js', '.vue', '.json', '.ts', '.d.ts'], // 为了之后引入不添加后缀
         alias: {
             '@': paths.appSrc,
         },
@@ -79,7 +79,7 @@ module.exports = {
                                 },
                             },
                             {
-                                loader: 'babel-loader', // ?cacheDirectory=true 会时不时的报错
+                                loader: 'babel-loader?cacheDirectory=true',
                                 options: {
                                     presets: [
                                         [
