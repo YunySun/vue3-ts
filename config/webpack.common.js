@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-05-24 09:18:19
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-04 17:11:40
+ * @LastEditTime: 2022-08-05 09:20:35
  */
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -79,7 +79,7 @@ module.exports = {
                                 },
                             },
                             {
-                                loader: 'babel-loader?cacheDirectory=true',
+                                loader: 'babel-loader', // ?cacheDirectory=true
                                 options: {
                                     presets: [
                                         [

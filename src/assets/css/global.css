@@ -1,17 +1,31 @@
-html, body, div, span,
-h1, h2, h3, h4, h5, h6, p,
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
 a,
-em, img,
-b, i,
-ul, ol, li,
-form, label,
-header, footer {
+em,
+img,
+b,
+i,
+ul,
+ol,
+li,
+form,
+label,
+header,
+footer {
     margin: 0;
     padding: 0;
     border: 0;
     vertical-align: baseline;
-    font-weight: normal;
-    word-wrap:break-word;
+    word-wrap: break-word;
 }
 
 html {
@@ -22,17 +36,23 @@ html {
 }
 
 body {
-    font-size:  14px;
+    font-size: 14px;
     color: #222222;
 }
 
-html,body{
+html,
+body {
     height: 100%;
 }
 
 /*取消字体默认样式*/
 
-span, i, em, b, a, strong {
+span,
+i,
+em,
+b,
+a,
+strong {
     font-style: normal;
     display: inline-block;
     vertical-align: middle;
@@ -40,7 +60,8 @@ span, i, em, b, a, strong {
 }
 
 /*取消按钮和input的默认样式*/
-button, input {
+button,
+input {
     border: none;
     outline: none;
     padding: 0;
@@ -50,27 +71,31 @@ button {
     text-align: center;
 }
 
-
 /* 移动端去除a button input 标签高亮边框 */
-a, button, input {
-    -webkit-tap-highlight-color:rgba(255,0,0,0);
+a,
+button,
+input {
+    -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
 }
 
 /* HTML5 display-role reset for older browsers */
-footer, header {
+footer,
+header {
     display: block;
 }
 
 body {
-    line-height: 1;
+    line-height: 1.4;
 }
 
-
-ol, ul, li {
+ol,
+ul,
+li {
     list-style: none;
 }
 
-input, textarea {
+input,
+textarea {
     outline: none;
 }
 
@@ -84,15 +109,19 @@ a {
 }
 
 /* input-placeholder默认样式 */
-input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
-    color:#ABABB8;
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: #ababb8;
 }
-input:-moz-placeholder, textarea:-moz-placeholder {
-    color:#ABABB8;
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+    color: #ababb8;
 }
-input::-moz-placeholder, textarea::-moz-placeholder {
-    color:#ABABB8;
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+    color: #ababb8;
 }
-input:-ms-input-placeholder, textarea:-ms-input-placeholder {
-    color:#ABABB8;
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    color: #ababb8;
 }

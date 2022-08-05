@@ -3,80 +3,106 @@
  * @Author: 李昶
  * @Date: 2022-06-15 21:57:33
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-04 16:30:44
+ * @LastEditTime: 2022-08-05 15:25:15
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
-    <div>
-        <el-button type="primary" plain round>计数器-1</el-button>
-        <span>{{ count }}</span>
-        <el-button type="primary" plain round>计数器+1</el-button>
+    <div class="ref-wrapper">
+        <h3 class="project__title">计数器</h3>
+        <div class="counter-wrapper">
+            <el-button type="primary" plain round @click="minusAction">-1</el-button>
+            <span>{{ count }}</span>
+            <el-button type="primary" plain round @click="addAction">+1</el-button>
+        </div>
+        <h3 class="project__title">ref对象类型</h3>
+        <div class="user-wrapper">
+            <p class="name">{{ userRef.name }}</p>
+            <p class="address">{{ userRef.address }}</p>
+            <p class="date">{{ userRef.date }}</p>
+        </div>
+        <h3 class="project__title">ref</h3>
+        <el-input v-model="name" placeholder="Please input" />
+        <el-input v-model="date" placeholder="Please input" />
+        <el-input v-model="address" placeholder="Please input" />
+
+        <!-- <div class="user-wrapper">
+            <p class="name">{{ userObjRef.name }}</p>
+            <p class="address">{{ userObjRef.address }}</p>
+            <p class="date">{{ userObjRef.date }}</p>
+        </div> -->
     </div>
 </template>
 
 <script lang="ts">
-import { ref, reactive } from 'vue';
+import { ref } from 'vue';
+import { User } from '@/interface/common';
 
 export default {
     name: 'refPage',
     setup() {
+        // 对string number boolean类型有效
         const count = ref<number>(0);
+        // 减法事件
+        function minusAction() {
+            count.value -= 1;
+        }
+        // 加法事件
+        function addAction() {
+            count.value += 1;
+        }
 
-        // count.value += 1;
-        // console.log(count.value);
+        // 对对象类型
+        const userRef = ref<User>({
+            date: '2022-08-04',
+            name: '某某',
+            address: '北京',
+        });
 
-        // const objectRef = ref({ count: 0 });
+        // 响应式的替换
+        userRef.value = { date: '2022-08-05', name: '李昶', address: '江苏南京' };
 
-        // 这是响应式的替换
-        // objectRef.value = { count: 1 };
+        // ref解构对象
+        // const { date, name, address } = userRef.value;
 
-        // const obj = {
-        //     foo: ref(1),
-        //     bar: ref(2),
-        // };
+        // 对象赋值响应
+        // const userObjRef = ref({
+        //     date: ref<string>('2022-08-04'),
+        //     name: ref<string>('某某'),
+        //     address: ref<string>('北京'),
+        // });
 
-        // function callSomeFunction(foo) {
-        //     const newFoo = foo;
-        //     newFoo.value = 4;
-        //     console.log(obj.foo);
-        // }
+        const date = ref<string>(userRef.value.date);
+        const name = ref<string>(userRef.value.name);
+        const address = ref<string>(userRef.value.address);
 
-        // callSomeFunction(obj.foo);
-
-        // function increment() {
-        //     count.value += 1;
-        // }
-
-        // ref在响应式对象中的解包
-        // const count2 = ref(0);
-        // const state = reactive({ count: count2 });
-
-        // console.log('reactive count: ', state.count);
-        // state.count = 1;
-        // console.log('ref count: ', count2.value);
-
-        // 如果将一个新的ref赋值给一个关联了已有ref的property 那么它会替换掉旧的ref
-        // const otherCount = ref(2);
-        // state.count = otherCount;
-        // console.log('新关联ref的reactive count: ', state.count);
-        // // 原始ref现在已经和state.count失去联系
-        // console.log('原始的ref count: ', count2.value);
-
-        /** 数组和集合类型的ref解包
-         * 不像响应式对象 当ref作为响应式数组或像Map这种原生集合类型的元素被访问的时候 不会进行解包
-         */
-        // const books = reactive([ref('Vue 3 Guide')]);
-        // console.log('reactive内创建数组中的ref值: ', books[0].value);
-
-        // const map = reactive(new Map([['count', ref(0)]]));
-        // console.log('reactive创建map集合: ', map.get('count').value);
         return {
             count,
-            // increment,
-            // ...obj,
+            minusAction,
+            addAction,
+            userRef,
+            // userObjRef,
+            date,
+            name,
+            address,
         };
     },
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+.counter-wrapper {
+    span {
+        margin: 0 10px;
+    }
+}
+
+.user-wrapper {
+    p + p {
+        margin-top: 10px;
+    }
+}
+
+.el-input + .el-input {
+    margin-top: 20px;
+}
+</style>

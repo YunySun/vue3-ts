@@ -1,18 +1,28 @@
 // 盒子模型
 .flex-b,
 .flex-b-c {
-  display: flex;
+    display: flex;
 }
 
 .flex-b,
 .flex-b-c {
-  justify-content: space-between;
+    justify-content: space-between;
 }
 
 .flex-b-c {
-  align-items: center;
+    align-items: center;
 }
 
 .flex-1 {
-  flex: 1;
+    flex: 1;
+}
+
+.project__title {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.rst-il {
+    display: inline;
+    vertical-align: baseline;
 }
