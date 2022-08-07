@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-05-31 10:20:15*
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-04 17:12:04
+ * @LastEditTime: 2022-08-07 11:39:53
  * @Profile: 一个比较废柴的前端开发
  */
 module.exports = {
@@ -39,6 +39,7 @@ module.exports = {
                 trailingComma: 'es5',
                 printWidth: 120,
                 bracketSpacing: true,
+                endOfLine: 'auto', // 结束行形式
             },
         ],
         'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
