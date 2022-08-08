@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-08 14:18:11
+ * @LastEditTime: 2022-08-08 23:21:37
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import commonLayout from './layout/commonLayout.vue';
@@ -66,19 +66,19 @@ export const routes: Array<RouteRecordRaw> = [
                 },
             },
             {
+                path: 'provide',
+                name: 'providePage',
+                component: () => import('@/views/providePage.vue'),
+                meta: {
+                    title: 'Provide',
+                },
+            },
+            {
                 path: 'state',
                 name: 'aboutState',
                 component: () => import('@/views/aboutState.vue'),
                 meta: {
                     title: 'State',
-                },
-            },
-            {
-                path: 'provide',
-                name: 'aboutProvideInject',
-                component: () => import('@/views/aboutProvideInject.vue'),
-                meta: {
-                    title: 'Provide Inject',
                 },
             },
         ],

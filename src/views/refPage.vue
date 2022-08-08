@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-15 21:57:33
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-07 11:31:41
+ * @LastEditTime: 2022-08-08 23:12:04
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -30,11 +30,26 @@
             <p class="address">{{ userObjRef.address }}</p>
             <p class="date">{{ userObjRef.date }}</p>
         </div> -->
+        <h3 class="project__title">元素ref</h3>
+        <input class="project__input" ref="textInputRef" type="text" placeholder="请输入" />
+        <el-button type="primary" plain round @click="consoleRefAction">console input ref</el-button>
+        <h3 class="project__title">数组元素ref</h3>
+        <ul>
+            <li v-for="{ name } in userArr" :key="name" ref="userArrRef">{{ name }}</li>
+        </ul>
+        <el-button type="primary" plain round @click="userArrRefAction">userArrRef</el-button>
+        <h3>组件ref</h3>
+        <el-tabs>
+            <el-tab-pane :label="name" v-for="{ name } in userArr" :key="name" ref="componentArrRef">{{
+                name
+            }}</el-tab-pane>
+        </el-tabs>
+        <el-button type="primary" plain round @click="componentArrRefAction">componentArrRef</el-button>
     </div>
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
+import { reactive, ref } from 'vue';
 import { User } from '@/interface/common';
 
 export default {
@@ -75,6 +90,42 @@ export default {
         const name = ref<string>(userRef.value.name);
         const address = ref<string>(userRef.value.address);
 
+        const textInputRef = ref<null | HTMLElement>(null);
+        function consoleRefAction() {
+            console.log(textInputRef.value);
+        }
+
+        // 元素数组ref
+        const userArr: User[] = reactive([
+            {
+                date: '2022-08-08',
+                name: '李昶',
+                address: '安徽芜湖无为',
+            },
+            {
+                date: '2022-08-08',
+                name: '叶四帅',
+                address: '浙江杭州',
+            },
+            {
+                date: '2022-08-08',
+                name: '王凤山',
+                address: '上海',
+            },
+        ]);
+
+        const userArrRef = ref<HTMLElement[]>([]);
+
+        function userArrRefAction() {
+            console.log(userArrRef.value);
+        }
+
+        const componentArrRef = ref<HTMLElement[]>([]);
+
+        function componentArrRefAction() {
+            console.log(componentArrRef.value);
+        }
+
         return {
             count,
             minusAction,
@@ -84,6 +135,13 @@ export default {
             date,
             name,
             address,
+            textInputRef,
+            consoleRefAction,
+            userArr,
+            userArrRef,
+            userArrRefAction,
+            componentArrRef,
+            componentArrRefAction,
         };
     },
 };
@@ -104,5 +162,9 @@ export default {
 
 .el-input + .el-input {
     margin-top: 20px;
+}
+
+.project__input {
+    border: 1px solid lightgray;
 }
 </style>
