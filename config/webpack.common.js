@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-05-24 09:18:19
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-05 09:20:35
+ * @LastEditTime: 2022-08-08 17:06:29
  */
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -66,37 +66,6 @@ module.exports = {
                         generator: {
                             filename: 'font/[name].[contenthash:10].[ext]',
                         },
-                    },
-                    {
-                        test: /\.(js|mjs|ts|tsx)$/,
-                        exclude: /node_modules/,
-                        use: [
-                            {
-                                loader: 'esbuild-loader',
-                                options: {
-                                    loader: 'tsx',
-                                    target: 'es2015',
-                                },
-                            },
-                            {
-                                loader: 'babel-loader', // ?cacheDirectory=true
-                                options: {
-                                    presets: [
-                                        [
-                                            '@babel/preset-env',
-                                            {
-                                                useBuiltIns: 'usage',
-                                                corejs: 3,
-                                            },
-                                        ],
-                                    ],
-                                },
-                            },
-                            {
-                                loader: 'ts-loader',
-                                options: { appendTsSuffixTo: [/\.vue$/] },
-                            },
-                        ],
                     },
                 ],
             },

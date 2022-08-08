@@ -54,8 +54,6 @@ b,
 a,
 strong {
     font-style: normal;
-    display: inline-block;
-    vertical-align: middle;
     font-weight: normal;
 }
 
@@ -97,10 +95,6 @@ li {
 input,
 textarea {
     outline: none;
-}
-
-span {
-    vertical-align: middle;
 }
 
 a {

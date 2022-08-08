@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-05 09:44:47
+ * @LastEditTime: 2022-08-08 14:04:41
 -->
 <template>
     <div class="app-wrapper flex-b">
@@ -69,10 +69,11 @@ export default defineComponent({
 
 <style lang="scss">
 .app-wrapper {
-    height: 100%;
+    height: 100vh;
+    overflow: hidden;
     .app-side-menu {
         width: 300px;
-        height: 100vh;
+        // height: 100vh;
         overflow-y: scroll;
         /*---滚动条默认显示样式--*/
         &::-webkit-scrollbar-thumb {
@@ -106,6 +107,7 @@ export default defineComponent({
     }
 
     .app-container {
+        overflow-y: scroll;
         padding: 20px;
     }
 }
