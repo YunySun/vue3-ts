@@ -3,18 +3,18 @@
  * @Author: 李昶
  * @Date: 2022-06-23 16:02:20
  * @LastEditors: 李昶
- * @LastEditTime: 2022-06-23 16:10:28
+ * @LastEditTime: 2022-08-09 10:17:57
  */
-export interface CommandBase {
-  action: string,
-  params: ParameterBase
+interface ParameterSecondary {
+    id: string;
 }
 
 interface ParameterBase {
-  name: string,
-  params?: ParameterSecondary
+    name: string;
+    params?: ParameterSecondary;
 }
 
-interface ParameterSecondary {
-  id: string
+export interface CommandBase {
+    action: string;
+    params: ParameterBase;
 }

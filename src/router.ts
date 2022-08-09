@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-08 23:21:37
+ * @LastEditTime: 2022-08-09 15:21:35
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import commonLayout from './layout/commonLayout.vue';
@@ -75,8 +75,8 @@ export const routes: Array<RouteRecordRaw> = [
             },
             {
                 path: 'state',
-                name: 'aboutState',
-                component: () => import('@/views/aboutState.vue'),
+                name: 'statePage',
+                component: () => import('@/views/statePage.vue'),
                 meta: {
                     title: 'State',
                 },
@@ -90,6 +90,15 @@ export const routes: Array<RouteRecordRaw> = [
         meta: {
             title: 'Request',
             icon: 'connection',
+        },
+    },
+    {
+        path: '/edit',
+        name: 'editPage',
+        component: () => import('@/views/editPage.vue'),
+        meta: {
+            title: '编辑器',
+            icon: 'Document',
         },
     },
 ];

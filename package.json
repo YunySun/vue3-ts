@@ -27,6 +27,7 @@
     "@typescript-eslint/parser": "^5.27.0",
     "@vue/compiler-sfc": "^3.2.36",
     "babel-loader": "^8.2.5",
+    "copy-webpack-plugin": "^11.0.0",
     "core-js": "^3.22.6",
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.0.0",
@@ -69,10 +70,12 @@
   ],
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.6",
+    "@tinymce/tinymce-vue": "^5.0.0",
     "axios": "^0.27.2",
     "element-plus": "^2.2.6",
     "pinia": "^2.0.14",
     "qs": "^6.10.5",
+    "tinymce": "^6.1.2",
     "vue": "^3.2.33",
     "vue-router": "^4.0.16"
   }

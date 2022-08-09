@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-15 21:57:33
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-08 23:12:04
+ * @LastEditTime: 2022-08-09 10:20:42
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -50,7 +50,7 @@
 
 <script lang="ts">
 import { reactive, ref } from 'vue';
-import { User } from '@/interface/common';
+import { PageUser } from '@/interface/common';
 
 export default {
     name: 'refPage',
@@ -67,7 +67,7 @@ export default {
         }
 
         // 对对象类型
-        const userRef = ref<User>({
+        const userRef = ref<PageUser>({
             date: '2022-08-04',
             name: '某某',
             address: '北京',
@@ -96,7 +96,7 @@ export default {
         }
 
         // 元素数组ref
-        const userArr: User[] = reactive([
+        const userArr: PageUser[] = reactive([
             {
                 date: '2022-08-08',
                 name: '李昶',

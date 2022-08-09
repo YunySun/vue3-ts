@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-08-04 16:41:05
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-07 11:31:50
+ * @LastEditTime: 2022-08-09 10:20:05
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -33,12 +33,12 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
-import { User } from '@/interface/common';
+import { PageUser } from '@/interface/common';
 
 export default defineComponent({
     name: 'reactivePage',
     setup() {
-        const tableData = reactive<User[]>([
+        const tableData = reactive<PageUser[]>([
             {
                 date: '2022-08-04',
                 name: 'Tom',
@@ -60,7 +60,7 @@ export default defineComponent({
                 address: 'No. 189, Grove St, Los Angeles',
             },
         ]);
-        function printEdit(user: User) {
+        function printEdit(user: PageUser) {
             console.log(user, tableData);
         }
 
@@ -71,7 +71,7 @@ export default defineComponent({
          */
         // 类型“string”不满足约束“object”。ts(2344)
         // const primitiveType = reactive<string>('Primitive type word');
-        const user = reactive<User>({
+        const user = reactive<PageUser>({
             date: '2022-08-05',
             name: '李昶',
             address: '江苏南京',

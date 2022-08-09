@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-05-24 09:18:19
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-08 17:06:29
+ * @LastEditTime: 2022-08-09 16:47:10
  */
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -14,6 +14,8 @@ const { ElementPlusResolver } = require('unplugin-vue-components/resolvers');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const chalk = require('chalk');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const paths = {
     appSrc: resolve(__dirname, '../src'),
@@ -78,6 +80,16 @@ module.exports = {
         ],
     },
     plugins: [
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    // 从public中复制文件
+                    from: resolve(__dirname, '../public/resource'),
+                    // 把复制的文件存放到dis里面
+                    to: resolve(__dirname, '../build/resource'),
+                },
+            ],
+        }),
         new HtmlWebpackPlugin({
             template: './public/index.html',
         }),

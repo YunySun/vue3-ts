@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-23 14:22:15
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-04 17:07:24
+ * @LastEditTime: 2022-08-09 10:18:30
  * @Profile: 一个比较废柴的前端开发
  */
 import { Cover } from '@/interface/common';
@@ -11,14 +11,6 @@ import { CommandBase } from './command';
 
 export interface ListModulesData {
     pageconfig: string;
-}
-
-export interface BookstoreBooks {
-    m_id: number;
-    num: number;
-    m_name: string;
-    css_type: string;
-    content: BookstoreBook[];
 }
 
 export interface BookstoreBook {
@@ -46,4 +38,12 @@ export interface BookstoreBook {
     avatar?: string;
     shupin?: string;
     spid?: string;
+}
+
+export interface BookstoreBooks {
+    m_id: number;
+    num: number;
+    m_name: string;
+    css_type: string;
+    content: BookstoreBook[];
 }
