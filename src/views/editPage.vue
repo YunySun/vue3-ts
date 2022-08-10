@@ -3,34 +3,36 @@
  * @Author: 李昶
  * @Date: 2022-08-09 14:57:19
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-09 22:38:15
+ * @LastEditTime: 2022-08-10 10:36:03
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
     <div class="edit-wrapper">
-        <tinymce-component ref="editor" v-model="msg" :disabled="disabled" />
+        <tinymce-component ref="editor" v-model="editContent" :disabled="disabled" />
     </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
 import tinymceComponent from '../components/tinymce/tinymceComponent.vue';
 
-export default {
+export default defineComponent({
     components: { tinymceComponent },
     name: 'editPage',
-    data() {
+    setup() {
+        const editContent = ref<string>('Welcome to Use Tinymce Editor');
+        const disabled = ref<boolean>(false);
+        // 清空内容
+        function clear() {
+            this.$refs.editor.clear();
+        }
         return {
-            msg: 'Welcome to Use Tinymce Editor',
-            disabled: false,
+            editContent,
+            disabled,
+            clear,
         };
     },
-    methods: {
-        // 清空内容
-        clear() {
-            this.$refs.editor.clear();
-        },
-    },
-};
+});
 </script>
 
 <style></style>

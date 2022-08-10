@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-05-24 09:18:19
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-09 16:47:10
+ * @LastEditTime: 2022-08-10 11:31:42
  */
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -16,6 +16,7 @@ const chalk = require('chalk');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { DefinePlugin } = require('webpack');
 
 const paths = {
     appSrc: resolve(__dirname, '../src'),
@@ -92,6 +93,10 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: './public/index.html',
+        }),
+        new DefinePlugin({
+            __VUE_OPTIONS_API__: true,
+            __VUE_PROD_DEVTOOLS__: false,
         }),
         new VueLoaderPlugin(),
         AutoImport({

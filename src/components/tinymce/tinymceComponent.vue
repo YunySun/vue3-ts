@@ -1,6 +1,6 @@
 <template>
     <div class="tinymce-box">
-        <editor v-model="value" :init="init" :disabled="disabled" @onClick="onClick"></editor>
+        <editor v-model="value" :init="init" :disabled="disabled"></editor>
     </div>
 </template>
 
@@ -17,6 +17,7 @@ import 'tinymce/plugins/importcss'; // 图片工具
 import 'tinymce/plugins/media'; // 插入视频插件
 import 'tinymce/plugins/table'; // 插入表格插件
 import 'tinymce/plugins/lists'; // 列表插件
+import 'tinymce/plugins/advlist'; // 列表插件
 import 'tinymce/plugins/charmap'; // 特殊字符
 import 'tinymce/plugins/wordcount'; // 字数统计插件
 import 'tinymce/plugins/codesample'; // 插入代码
@@ -29,6 +30,10 @@ import 'tinymce/plugins/save'; // 保存
 import 'tinymce/plugins/searchreplace'; // 查询替换
 import 'tinymce/plugins/pagebreak'; // 分页
 import 'tinymce/plugins/insertdatetime';
+import 'tinymce/plugins/autolink';
+import 'tinymce/plugins/emoticons';
+import 'tinymce/plugins/emoticons/js/emojis';
+import 'tinymce/plugins/help';
 
 import { computed, defineComponent, onMounted } from 'vue';
 // 时间插入
@@ -46,16 +51,26 @@ export default defineComponent({
         },
         plugins: {
             type: [String, Array],
-            // default: 'lists image media table wordcount save preview',
+            default: 'code preview lists advlist autolink image emoticons help',
             // 插件需要import进来
-            // default: 'wordcount visualchars visualblocks toc textpattern template tabfocus spellchecker searchreplace save quickbars print preview paste pagebreak noneditable nonbreaking media insertdatetime importcss imagetools image hr help fullscreen fullpage directionality codesample code charmap link code table lists advlist anchor autolink autoresize autosave'
+            // default: 'wordcount visualchars visualblocks toc textpattern template tabfocus spellchecker searchreplace save quickbars print preview paste pagebreak noneditable nonbreaking media insertdatetime importcss imagetools image hr help fullscreen fullpage directionality codesample code charmap link code table lists advlist anchor autolink autoresize autosave media table'
         },
         toolbar: {
             type: [String, Array],
+            default: () => [
+                // { name: 'history', items: ['undo', 'redo'] },
+                // { name: 'styles', items: ['styles'] },
+                // { name: 'formatting', items: ['bold', 'italic'] },
+                // { name: 'alignment', items: ['alignleft', 'aligncenter', 'alignright', 'alignjustify'] },
+                // { name: 'indentation', items: ['outdent', 'indent'] },
+                'code preview | bold italic underline strikethrough lineheight | bullist numlist |  outdent indent blockquote | alignleft aligncenter alignright alignjustify',
+                'styles fontfamily fontsize image emoticons help',
+            ],
+
             // default:
-            //     'undo redo |  formatselect | bold italic underline strikethrough forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent blockquote | lists image media table | codesample code removeformat save preview',
-            // default:
-            //     'formats undo redo paste print fontsizeselect fontselect template fullpage|wordcount ltr rtl visualchars visualblocks toc spellchecker searchreplace|save preview pagebreak nonbreaking|media image|outdent indent aligncenter alignleft alignright alignjustify lineheight  underline quicklink h2 h3 blockquote numlist bullist table removeformat forecolor backcolor bold italic  strikethrough hr charmap link insertdatetime|subscript superscript cut codesample code |anchor preview fullscreen|help',
+            //     'code preview | bold italic underline strikethrough lineheight | bullist numlist |  outdent indent blockquote | alignleft aligncenter alignright alignjustify',
+
+            // 'code undo redo restoredraft | cut copy paste pastetext | forecolor backcolor bold italic underline strikethrough link anchor | alignleft aligncenter alignright alignjustify outdent indent | styleselect formatselect fontselect fontsizeselect | bullist numlist | blockquote subscript superscript removeformat | table image media charmap emoticons hr pagebreak insertdatetime print preview | fullscreen | bdmap indent2em lineheight formatpainter axupimgs',
         },
     },
     // emits: ['update:modelValue'],
