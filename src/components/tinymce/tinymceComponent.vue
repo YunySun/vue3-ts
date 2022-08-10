@@ -51,7 +51,7 @@ export default defineComponent({
         },
         plugins: {
             type: [String, Array],
-            default: 'code preview lists advlist autolink image emoticons help',
+            default: 'code preview lists advlist autolink image emoticons help wordcount',
             // 插件需要import进来
             // default: 'wordcount visualchars visualblocks toc textpattern template tabfocus spellchecker searchreplace save quickbars print preview paste pagebreak noneditable nonbreaking media insertdatetime importcss imagetools image hr help fullscreen fullpage directionality codesample code charmap link code table lists advlist anchor autolink autoresize autosave media table'
         },
@@ -64,7 +64,7 @@ export default defineComponent({
                 // { name: 'alignment', items: ['alignleft', 'aligncenter', 'alignright', 'alignjustify'] },
                 // { name: 'indentation', items: ['outdent', 'indent'] },
                 'code preview | bold italic underline strikethrough lineheight | bullist numlist |  outdent indent blockquote | alignleft aligncenter alignright alignjustify',
-                'styles fontfamily fontsize image emoticons help',
+                'styles fontfamily fontsize image emoticons wordcount help ',
             ],
 
             // default:
