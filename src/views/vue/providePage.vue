@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { defineComponent, provide, ref } from 'vue';
-import provideComponent from '../components/provideComponent.vue';
+import provideComponent from '@/components/provideComponent.vue';
 
 export default defineComponent({
     components: { provideComponent },

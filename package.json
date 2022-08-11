@@ -70,9 +70,11 @@
   ],
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.6",
+    "@highlightjs/vue-plugin": "^2.1.0",
     "@tinymce/tinymce-vue": "^5.0.0",
     "axios": "^0.27.2",
     "element-plus": "^2.2.6",
+    "highlight.js": "^11.6.0",
     "pinia": "^2.0.14",
     "qs": "^6.10.5",
     "tinymce": "^6.1.2",

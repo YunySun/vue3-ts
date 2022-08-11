@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-09 15:21:35
+ * @LastEditTime: 2022-08-11 15:18:12
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import commonLayout from './layout/commonLayout.vue';
@@ -21,14 +21,14 @@ export const routes: Array<RouteRecordRaw> = [
     {
         path: '/vue',
         name: 'vue',
-        redirect: '/vue/state',
+        redirect: '/vue/reactive',
         component: commonLayout,
         meta: { title: 'Vue', icon: 'Menu' },
         children: [
             {
                 path: 'reactive',
                 name: 'reactivePage',
-                component: () => import('@/views/reactivePage.vue'),
+                component: () => import('@/views/vue/reactivePage.vue'),
                 meta: {
                     title: 'Reactive',
                 },
@@ -36,7 +36,7 @@ export const routes: Array<RouteRecordRaw> = [
             {
                 path: 'ref',
                 name: 'refPage',
-                component: () => import('@/views/refPage.vue'),
+                component: () => import('@/views/vue/refPage.vue'),
                 meta: {
                     title: 'Ref',
                 },
@@ -44,7 +44,7 @@ export const routes: Array<RouteRecordRaw> = [
             {
                 path: 'computed',
                 name: 'computedPage',
-                component: () => import('@/views/computedPage.vue'),
+                component: () => import('@/views/vue/computedPage.vue'),
                 meta: {
                     title: 'Computed',
                 },
@@ -52,7 +52,7 @@ export const routes: Array<RouteRecordRaw> = [
             {
                 path: 'lifecycle',
                 name: 'lifecyclePage',
-                component: () => import('@/views/lifecyclePage.vue'),
+                component: () => import('@/views/vue/lifecyclePage.vue'),
                 meta: {
                     title: 'Lifecycle',
                 },
@@ -60,7 +60,7 @@ export const routes: Array<RouteRecordRaw> = [
             {
                 path: 'watch',
                 name: 'watchPage',
-                component: () => import('@/views/watchPage.vue'),
+                component: () => import('@/views/vue/watchPage.vue'),
                 meta: {
                     title: 'Watch',
                 },
@@ -68,7 +68,7 @@ export const routes: Array<RouteRecordRaw> = [
             {
                 path: 'provide',
                 name: 'providePage',
-                component: () => import('@/views/providePage.vue'),
+                component: () => import('@/views/vue/providePage.vue'),
                 meta: {
                     title: 'Provide',
                 },
@@ -76,7 +76,7 @@ export const routes: Array<RouteRecordRaw> = [
             {
                 path: 'state',
                 name: 'statePage',
-                component: () => import('@/views/statePage.vue'),
+                component: () => import('@/views/vue/statePage.vue'),
                 meta: {
                     title: 'State',
                 },
@@ -100,6 +100,40 @@ export const routes: Array<RouteRecordRaw> = [
             title: '编辑器',
             icon: 'Document',
         },
+    },
+    {
+        path: '/interview',
+        name: 'interview',
+        redirect: '/interview/basic',
+        component: commonLayout,
+        meta: { title: '面试题', icon: 'Reading' },
+        children: [
+            {
+                path: 'basic',
+                name: 'basicPage',
+                component: () => import('@/views/interview/basicPage.vue'),
+                meta: {
+                    title: 'Basic',
+                },
+            },
+        ],
+    },
+    {
+        path: '/npm',
+        name: 'npm',
+        redirect: '/npm/highlight',
+        component: commonLayout,
+        meta: { title: 'npm插件', icon: 'Tools' },
+        children: [
+            {
+                path: 'highlight',
+                name: 'highlightPage',
+                component: () => import('@/views/npm/highlightPage.vue'),
+                meta: {
+                    title: 'Highlight.js',
+                },
+            },
+        ],
     },
 ];
 

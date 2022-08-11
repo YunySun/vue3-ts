@@ -5,6 +5,7 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    CodeTxt: typeof import('./src/components/tools/codeTxt.vue')['default']
     LifecycleComponent: typeof import('./src/components/lifecycleComponent.vue')['default']
     ProvideComponent: typeof import('./src/components/provideComponent.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

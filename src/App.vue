@@ -3,12 +3,12 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-08 14:04:41
+ * @LastEditTime: 2022-08-11 11:57:13
 -->
 <template>
     <div class="app-wrapper flex-b">
         <div class="app-side-menu">
-            <el-menu :default-active="routerPath" class="el-menu-vertical-demo" @select="handleOpen">
+            <el-menu :default-active="routerPath" class="el-menu-vertical-demo" @select="handleOpen" @open="handleOpen">
                 <template v-for="route in routesRef" :key="route.name">
                     <el-sub-menu v-if="route.children && route.children.length > 0" :index="route.path">
                         <template #title>
@@ -75,32 +75,6 @@ export default defineComponent({
         width: 300px;
         // height: 100vh;
         overflow-y: scroll;
-        /*---滚动条默认显示样式--*/
-        &::-webkit-scrollbar-thumb {
-            // background-color: #018ee8;
-            height: 50px;
-            outline-offset: -2px;
-            outline: 2px solid #fff;
-            border-radius: 4px;
-            border: 2px solid #fff;
-        }
-        /*---鼠标点击滚动条显示样式--*/
-        &::-webkit-scrollbar-thumb:hover {
-            // background-color: #fb4446;
-            height: 50px;
-            border-radius: 4px;
-        }
-        /*---滚动条大小--*/
-        &::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        /*---滚动框背景样式--*/
-        &::-webkit-scrollbar-track-piece {
-            background-color: #fff;
-            border-radius: 0;
-        }
         .el-menu {
             min-height: 100%;
         }
