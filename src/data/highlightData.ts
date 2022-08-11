@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-08-11 17:05:54
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-11 17:30:22
+ * @LastEditTime: 2022-08-11 23:14:50
  * @Profile: 一个比较废柴的前端开发
  */
 const demo1 = `function test(a) {
@@ -50,4 +50,29 @@ false
 new String('123') instanceof String
 true`;
 
-export { demo1, demo2, demo3 };
+const demo5 = `class PrimitiveString {
+    static [Symbol.hasInstance](x) {
+        return typeof x === 'string'
+    }
+}
+'123' instanceof PrimitiveString
+true`;
+
+const demo6 = `1 + '2'
+'12'
+true + true
+2
+5 + [1, 2,3]
+'51,2,3'`;
+
+const demo7 = `'a' + + 'b'
+'aNaN'`;
+
+const demo8 = `4-'1'
+3
+4-[]
+4
+4-[1,2,3]
+NaN`;
+
+export { demo1, demo2, demo3, demo4, demo5, demo6, demo7, demo8 };

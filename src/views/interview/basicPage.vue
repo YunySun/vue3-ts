@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-08-11 10:33:25
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-11 17:27:16
+ * @LastEditTime: 2022-08-11 23:15:03
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -61,18 +61,77 @@
             所以<code-txt>typeof</code-txt>无法准确判断原始类型和对象类型。
         </p>
         <p><code-txt>instanceof</code-txt>对于对象类型的判断，是通过原型链进行判断的，所以可以正确的判断对象类型</p>
+        <highlightjs language="js" :code="demo4" />
+        <p>
+            对于原始类型，<code-txt>instanceof</code-txt>是无法判断的。所以
+            <code-txt>instanceof</code-txt>也不是肯定可信的。
+        </p>
+        <p>如何自定义<code-txt>instanceof</code-txt>：</p>
+        <highlightjs language="js" :code="demo5" />
+        <h2 class="project__title">类型转换</h2>
+        <p>在JS中类型转换有三种情况：</p>
+        <ul>
+            <li>转换为布尔值</li>
+            <li>转换为数字</li>
+            <li>转换为字符串</li>
+        </ul>
+        <p></p>
+        <h4 class="project__title">转Boolean</h4>
+        <p>
+            在条件判断时，除了<code-txt>undefined</code-txt>、<code-txt>null</code-txt>、<code-txt>0</code-txt>、<code-txt>-0</code-txt>、<code-txt>''</code-txt>、<code-txt>NaN</code-txt>、<code-txt>false</code-txt>，其他的所有值和对象转换后都为<code-txt>true</code-txt>。
+        </p>
+        <h2 class="project__title">对象转原始类型</h2>
+        <p>对象转换原始类型的时候，会调用内置的函数，用于返回原始类型的值。算法逻辑如下：</p>
+        <ul>
+            <li>如果已经是原始类型，则不需要转换。</li>
+            <li>调用<code-txt>.valueOf()</code-txt>，如果转换为原始类型，则返回转换的值。</li>
+            <li>调用<code-txt>.toString()</code-txt>，如果转换为原始类型，则返回转换的值。</li>
+            <li>如果没有返回原始类型，则会报错。</li>
+        </ul>
+        <p></p>
+        <p>可以通过重写<code-txt>Symbol.toPrimitive</code-txt>，该方法在原始类型转换调用的优先级最高。</p>
+        <h4>四则运算</h4>
+        <p>加法运算特点：</p>
+        <ul>
+            <li>运算中其中有一个为字符串，那么就会把另一个也转换成字符串</li>
+            <li>如果一方不是字符串或者数字，那么就会将其转换成数字或者字符串</li>
+        </ul>
+        <p></p>
+        <highlightjs language="js" :code="demo6" />
+        <p>解析：</p>
+        <ul>
+            <li>触发第一条特点，所以将1转换成字符串，得到结果<code-txt>'12'</code-txt></li>
+            <li>
+                触发第二个特点，将<code-txt>true</code-txt>转换成<code-txt>1</code-txt>，得到结果<code-txt>2</code-txt>
+            </li>
+            <li>
+                触发第二个特点，将<code-txt>[1, 2, 3]</code-txt
+                >通过内置的函数<code-txt>toString</code-txt>转换成<code-txt>'1, 2, 3'</code-txt>，得到结果<code-txt
+                    >'51,2,3'</code-txt
+                >
+            </li>
+        </ul>
+        <p></p>
+        <p>加法运算特别注意的表达式<code-txt>'a' + + 'b'</code-txt></p>
+        <highlightjs language="js" :code="demo7" />
+        <p>
+            <code-txt>+ 'b'</code-txt>转换成<code-txt>NaN</code-txt>，
+            所以结果为<code-txt>'aNaN'</code-txt>，其中通过+字符串转换成<code-txt>number</code-txt>类型是开发中经常遇到的事
+        </p>
+        <p>除加法运算，只要一方是数字，那么另一方也会转换为数字</p>
+        <highlightjs language="js" :code="demo8" />
     </div>
 </template>
 
 <script>
 import CodeTxt from '@/components/tools/codeTxt.vue';
-import { demo1, demo2, demo3 } from '@/data/highlightData';
+import { demo1, demo2, demo3, demo4, demo5, demo6, demo7, demo8 } from '@/data/highlightData';
 
 export default {
     name: 'basicPage',
     components: { CodeTxt },
     setup() {
-        return { demo1, demo2, demo3 };
+        return { demo1, demo2, demo3, demo4, demo5, demo6, demo7, demo8 };
     },
 };
 </script>
