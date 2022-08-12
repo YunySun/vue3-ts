@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-05-24 09:18:19
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-10 11:31:42
+ * @LastEditTime: 2022-08-12 11:23:58
  */
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -115,7 +115,7 @@ module.exports = {
             directory: paths.appDist,
         },
         compress: true,
-        port: 8081,
+        port: 8888,
         open: true,
         hot: true,
     },

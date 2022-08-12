@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-08-11 10:33:25
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-11 23:15:03
+ * @LastEditTime: 2022-08-12 16:08:38
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -39,7 +39,7 @@
             通过了解对象类型，其中对象类型存储的是地址（指针），所以在赋值给另一个变量的时候，复制的也是这个对象类型存储的地址
             ，所以另一个变量在修改值的时候也会导致被赋值的变量发生改变。
         </p>
-        <h4>示例一</h4>
+        <h4>示例：</h4>
         <highlightjs language="js" :code="demo1" />
         <p>代码解析：</p>
         <ul>
@@ -120,18 +120,71 @@
         </p>
         <p>除加法运算，只要一方是数字，那么另一方也会转换为数字</p>
         <highlightjs language="js" :code="demo8" />
+        <h4 class="project__title">比较运算符</h4>
+        <ul>
+            <li>如果是对象，则通过内置函数转换成原始类型</li>
+            <li>如果是字符串，则根据<code-txt>unicode</code-txt>字符索引进行比较</li>
+        </ul>
+        <p></p>
+        <h2 class="project__title">this</h2>
+        <div class="article-tips warning">如何正确判断this？箭头函数的this是什么？</div>
+        <p>示例</p>
+        <highlightjs language="js" :code="demo9" />
+        <ul>
+            <li>函数直接调用，则<code-txt>this</code-txt>一定是<code-txt>window</code-txt></li>
+            <li>
+                对于对象，谁调用了函数，谁就是<code-txt>this</code-txt>，所以函数是<code-txt>obj</code-txt>调用的，所以<code-txt>this</code-txt>是<code-txt
+                    >obj</code-txt
+                >
+            </li>
+            <li>
+                对于<code-txt>new</code-txt>，<code-txt>this</code-txt>永远绑定在<code-txt>c</code-txt>上，不会被任何方式改变
+            </li>
+        </ul>
+        <p></p>
+        <p>
+            箭头函数中的<code-txt>this</code-txt>只取决包裹箭头函数的第一个普通函数的<code-txt>this</code-txt>，箭头函数是没有<code-txt>this</code-txt>的
+        </p>
+        <p>示例</p>
+        <highlightjs language="js" :code="demo10" />
+        <p>第一个普通函数直接调用，所以一定是<code-txt>window</code-txt></p>
+        <p>
+            <code-txt>bind</code-txt
+            >改变<code-txt>this</code-txt>指向，<code-txt>this</code-txt>取决于第一个参数，如果第一个参数为空，那么就是<code-txt
+                >window</code-txt
+            >
+        </p>
+        <div class="article-tips">
+            如果对一个函数多次<code-txt>bind</code-txt>后，那么<code-txt>this</code-txt>是什么呢？
+        </div>
+        <highlightjs language="js" :code="demo11" />
+        <p>上段代码可以看作为下面这段</p>
+        <highlightjs language="js" :code="demo12" />
+        <p>
+            可以看出来，不管对函数<code-txt>bind</code-txt>多少次，<code-txt>this</code-txt>永远都是第一个<code-txt>bind</code-txt>决定
+        </p>
+        <h4>如何正确判断this？</h4>
+        <ul>
+            <li><code-txt>new</code-txt>优先级最高，永远绑定在实例化上</li>
+            <li>
+                <code-txt>bind</code-txt
+                >永远将<code-txt>this</code-txt>的指向修改到第一个<code-txt>bind</code-txt>传递的参数
+            </li>
+            <li>函数调用，谁调用指向谁</li>
+            <li>箭头函数取决于第一个包裹的普通函数的<code-txt>this</code-txt></li>
+        </ul>
     </div>
 </template>
 
 <script>
 import CodeTxt from '@/components/tools/codeTxt.vue';
-import { demo1, demo2, demo3, demo4, demo5, demo6, demo7, demo8 } from '@/data/highlightData';
+import data from '@/data/basicData';
 
 export default {
     name: 'basicPage',
     components: { CodeTxt },
     setup() {
-        return { demo1, demo2, demo3, demo4, demo5, demo6, demo7, demo8 };
+        return { ...data };
     },
 };
 </script>

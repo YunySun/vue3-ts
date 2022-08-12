@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-08-11 17:05:54
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-11 23:14:50
+ * @LastEditTime: 2022-08-12 16:09:33
  * @Profile: 一个比较废柴的前端开发
  */
 const demo1 = `function test(a) {
@@ -75,4 +75,49 @@ const demo8 = `4-'1'
 4-[1,2,3]
 NaN`;
 
-export { demo1, demo2, demo3, demo4, demo5, demo6, demo7, demo8 };
+const demo9 = `function test() {
+    console.log(this.a)
+}
+var a = 10
+const obj = {
+    a: 11,
+    test: test
+}
+test()
+10 // window
+undefined
+obj.test()
+11 // obj
+var t = new test()
+undefined //t`;
+
+const demo10 = `function test() {
+    return () => {
+        return () => {
+            console.log(this)
+        }
+    }
+}
+console.log(test()()())
+Window`;
+
+const demo11 = `function test() {
+    console.log(this)
+}
+const a = {}
+test.bind().bind(a)()
+Window`;
+
+const demo12 = `function test() {
+    console.log(this)
+}
+function fn2() {
+    return function() {
+        return test.apply()
+    }.apply(a)
+}
+const a = {}
+fn2()
+Window`;
+
+export default { demo1, demo2, demo3, demo4, demo5, demo6, demo7, demo8, demo9, demo10, demo11, demo12 };
