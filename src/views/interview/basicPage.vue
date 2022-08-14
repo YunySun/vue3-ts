@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-08-11 10:33:25
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-12 16:08:38
+ * @LastEditTime: 2022-08-12 22:39:04
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -39,7 +39,7 @@
             通过了解对象类型，其中对象类型存储的是地址（指针），所以在赋值给另一个变量的时候，复制的也是这个对象类型存储的地址
             ，所以另一个变量在修改值的时候也会导致被赋值的变量发生改变。
         </p>
-        <h4>示例：</h4>
+        <h3>示例：</h3>
         <highlightjs language="js" :code="demo1" />
         <p>代码解析：</p>
         <ul>
@@ -76,7 +76,7 @@
             <li>转换为字符串</li>
         </ul>
         <p></p>
-        <h4 class="project__title">转Boolean</h4>
+        <h3 class="project__title">转Boolean</h3>
         <p>
             在条件判断时，除了<code-txt>undefined</code-txt>、<code-txt>null</code-txt>、<code-txt>0</code-txt>、<code-txt>-0</code-txt>、<code-txt>''</code-txt>、<code-txt>NaN</code-txt>、<code-txt>false</code-txt>，其他的所有值和对象转换后都为<code-txt>true</code-txt>。
         </p>
@@ -90,7 +90,7 @@
         </ul>
         <p></p>
         <p>可以通过重写<code-txt>Symbol.toPrimitive</code-txt>，该方法在原始类型转换调用的优先级最高。</p>
-        <h4>四则运算</h4>
+        <h3>四则运算</h3>
         <p>加法运算特点：</p>
         <ul>
             <li>运算中其中有一个为字符串，那么就会把另一个也转换成字符串</li>
@@ -120,7 +120,7 @@
         </p>
         <p>除加法运算，只要一方是数字，那么另一方也会转换为数字</p>
         <highlightjs language="js" :code="demo8" />
-        <h4 class="project__title">比较运算符</h4>
+        <h3 class="project__title">比较运算符</h3>
         <ul>
             <li>如果是对象，则通过内置函数转换成原始类型</li>
             <li>如果是字符串，则根据<code-txt>unicode</code-txt>字符索引进行比较</li>
@@ -163,7 +163,7 @@
         <p>
             可以看出来，不管对函数<code-txt>bind</code-txt>多少次，<code-txt>this</code-txt>永远都是第一个<code-txt>bind</code-txt>决定
         </p>
-        <h4>如何正确判断this？</h4>
+        <h3>如何正确判断this？</h3>
         <ul>
             <li><code-txt>new</code-txt>优先级最高，永远绑定在实例化上</li>
             <li>

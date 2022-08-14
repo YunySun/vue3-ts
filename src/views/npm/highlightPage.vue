@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Author: 李昶
+ * @Date: 2022-08-11 22:06:22
+ * @LastEditors: 李昶
+ * @LastEditTime: 2022-08-12 21:36:33
+ * @Profile: 一个比较废柴的前端开发
+-->
 <template>
     <div class="highlight-wrapper article-wrapper">
         <h2 class="article-title">Highlight.js</h2>

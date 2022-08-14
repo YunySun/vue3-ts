@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-08-12 16:05:12
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-12 17:30:12
+ * @LastEditTime: 2022-08-12 22:50:29
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -38,6 +38,26 @@
         <highlightjs language="js" :code="demo4" />
         <p>3.let</p>
         <highlightjs language="js" :code="demo5" />
+        <h2 class="project__title">深浅拷贝</h2>
+        <div class="article-tips warning">什么是浅拷贝？什么是深拷贝？如何实现他们？</div>
+        <p>
+            对于对象类型赋值，都是复制的地址赋值给新对象，这样的话新对象或者旧对象修改属性就会导致另一个对象造成变化。而要移除新旧对象之间的联系的话，就需要浅拷贝或者深拷贝了。
+        </p>
+        <h3 class="project__title">浅拷贝</h3>
+        <p>
+            浅拷贝将对象的属性和值复制到新对象中，如果属性的值是对象的话，拷贝的也是地址。可以通过<code-txt
+                >Object.assign({}, copyObj)</code-txt
+            >来实现。
+        </p>
+        <h3 class="project__title">深拷贝</h3>
+        <p>对于浅拷贝我们了解了无法对属性为对象的值移除和原对象的关联，所以深拷贝</p>
+        <p>
+            可以通过<code-txt>JSON.parse(JSON.stringify(copyObject))</code-txt>，但是有局限性，会忽略<code-txt>undefined</code-txt>、<code-txt>symbol</code-txt>、不能序列化函数、不能解决循环引用的对象。
+        </p>
+        <p>如果拷贝的对象含内置类型且不包含函数，可以使用<code-txt>MessageChannel</code-txt></p>
+        <highlightjs language="js" :code="demo7" />
+        <p>循环实现深拷贝：</p>
+        <highlightjs language="js" :code="demo6" />
     </div>
 </template>
 
