@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-05-24 09:18:08
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-08 17:06:35
+ * @LastEditTime: 2022-08-15 14:19:00
  */
 const { resolve } = require('path');
 const { merge } = require('webpack-merge');
@@ -73,7 +73,7 @@ module.exports = merge(Common, {
                             },
                             {
                                 loader: 'ts-loader',
-                                options: { appendTsSuffixTo: [/\.vue$/] },
+                                options: { appendTsSuffixTo: [/\.vue$/], transpileOnly: true },
                             },
                         ],
                     },

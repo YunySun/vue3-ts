@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-08-12 17:01:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-12 22:49:58
+ * @LastEditTime: 2022-08-15 14:11:42
  * @Profile: 一个比较废柴的前端开发
  */
 const demo1 = `function test() {
@@ -68,6 +68,26 @@ const demo5 = `for(let i=0; i<4; i++){
 3`;
 
 const demo6 = `function deepClone(obj) {
+    return new Promise((resolve) => {
+        const { port1, port2 } = new MessageChannel();
+        // 异步
+        port2.onmessage = (ev) => resolve(ev.data);
+        port1.postMessage(obj);
+    });
+}
+
+const testObj = {
+    a: ['1', 2, 3],
+    b: { c: 'test', d: 2 },
+};
+
+const test = async () => {
+    const clone = await deepClone(testObj);
+    console.log(clone);
+};
+
+test();`;
+const demo7 = `function deepClone(obj) {
     // 判断是否是对象
     function isObject(o) {
         return (typeof o === 'object' || typeof o === 'function') && o !== null;
@@ -94,26 +114,5 @@ const newObj = deepClone(testObj);
 newObj.b.c = 'clone';
 console.log(testObj.b.c);
 test`;
-
-const demo7 = `function deepClone(obj) {
-    return new Promise((resolve) => {
-        const { port1, port2 } = new MessageChannel();
-        // 异步
-        port2.onmessage = (ev) => resolve(ev.data);
-        port1.postMessage(obj);
-    });
-}
-
-const testObj = {
-    a: ['1', 2, 3],
-    b: { c: 'test', d: 2 },
-};
-
-const test = async () => {
-    const clone = await deepClone(testObj);
-    console.log(clone);
-};
-
-test();`;
 
 export default { demo1, demo2, demo3, demo4, demo5, demo6, demo7 };
