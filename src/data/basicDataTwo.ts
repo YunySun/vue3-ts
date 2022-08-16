@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-08-12 17:01:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-15 14:11:42
+ * @LastEditTime: 2022-08-16 22:44:09
  * @Profile: 一个比较废柴的前端开发
  */
 const demo1 = `function test() {
@@ -115,4 +115,7 @@ newObj.b.c = 'clone';
 console.log(testObj.b.c);
 test`;
 
-export default { demo1, demo2, demo3, demo4, demo5, demo6, demo7 };
+const demo8 = `obj.__proto__ === obj.__proto__.constructor.prototype
+true`;
+
+export default { demo1, demo2, demo3, demo4, demo5, demo6, demo7, demo8 };

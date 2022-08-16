@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-08-12 16:05:12
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-16 13:52:22
+ * @LastEditTime: 2022-08-16 23:04:30
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -62,8 +62,10 @@
         <div class="article-tips warning">什么是原型？原型链是什么？</div>
         <p>疑惑：为什么创建一个对象后，明明我们没有给它定义函数，但是却可以调用它们。</p>
         <p>
-            当我们创建一个对象并打印后发现，在浏览器上这个对象里面还包含了一个<code-txt>__proto__（[[Prototype]]）</code-txt>属性，而我们调用的函数也可在这上找到。也就是说JS的每个对象都有这个<code-txt>__proto__</code-txt>属性，而这个属性的值也就是所谓的原型。这个原型上绑定了很多函数，所以创建一个对象后，可以通过<code-txt>__proto__</code-txt>找到一个原型对象，而这个原型对象上定义了很多函数供我们使用。在<code-txt>__proto__</code-txt>对象内还有一个<code-txt>constructor</code-txt>属性，这个属性对象
+            当我们创建一个对象并打印后发现，在浏览器上这个对象里面还包含了一个<code-txt>__proto__（[[Prototype]]）</code-txt>属性，而我们调用的函数也可在这上找到。也就是说JS的每个对象都有这个<code-txt>__proto__</code-txt>属性，而这个属性的值也就是所谓的原型。这个原型上绑定了很多函数，所以创建一个对象后，可以通过<code-txt>__proto__</code-txt>找到一个原型对象，而这个原型对象上定义了很多函数供我们使用。在<code-txt>__proto__</code-txt>对象内还有一个<code-txt>constructor</code-txt>属性，这个属性值是一个对象。这个对象有个属性<code-txt>prototype</code-txt>，它的值和原对象的<code-txt>__proto__</code-txt>相同。
         </p>
+        <highlightjs language="js" :code="demo8" />
+        <p>而所谓的原型链就是通过<code-txt>__proto__</code-txt>的方式连接。这就是对象可以访问自己并没有绑定的函数。</p>
     </div>
 </template>
 

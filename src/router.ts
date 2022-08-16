@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-12 16:07:06
+ * @LastEditTime: 2022-08-16 22:51:33
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import commonLayout from './layout/commonLayout.vue';
@@ -122,6 +122,14 @@ export const routes: Array<RouteRecordRaw> = [
                 component: () => import('@/views/interview/basicPageTwo.vue'),
                 meta: {
                     title: 'BasicTwo',
+                },
+            },
+            {
+                path: 'es6',
+                name: 'es6Page',
+                component: () => import('@/views/interview/es6Page.vue'),
+                meta: {
+                    title: 'Es6',
                 },
             },
         ],
