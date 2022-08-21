@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-08-16 23:03:34
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-18 23:02:00
+ * @LastEditTime: 2022-08-20 17:14:59
  * @Profile: 一个比较废柴的前端开发
  */
 const demo1 = `console.log(a);
@@ -49,4 +49,14 @@ miFactory.operatorMachine(); //有25个员工在操作200个机器。
 console.log(lenovoFactory instanceof Factory);//true
 console.log(miFactory instanceof Factory);//true`;
 
-export default { demo1, demo2, demo3, demo4, demo5 };
+const demo6 = `const PI = (function () {
+    const _pi = 3.1415927;
+    return {
+        get() {
+            return _pi;
+        },
+    };
+})();
+console.log(PI.get()); // 3.1415927`;
+
+export default { demo1, demo2, demo3, demo4, demo5, demo6 };

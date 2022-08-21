@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-08-16 22:49:53
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-18 23:08:56
+ * @LastEditTime: 2022-08-20 23:10:11
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -69,7 +69,7 @@
             工厂模式在我看来就是对函数的优化，将创建的对象返回，即可以通过给属性赋值添加函数，也可以优化函数的复用性。
         </p>
         <highlightjs lang="js" :code="demo4" />
-        <h3>构造函数</h3>
+        <h4>构造函数</h4>
         <p>
             类是面向对象程序设计实现信息封装的基础。类是一种用户定义的引用数据类型，也称类类型。每个类包含数据说明和一组操作数据或传递消息的函数。类的实例称为对象。但是在JS并不是面向对象的语言，所以不具备类类型，但是JS通过函数和<code-txt>new</code-txt>操作符这些已有的特性来实现类的概念。也就是构造函数。通过构造函数来自定义对象类型的属性和函数方法，即类类型的操作数据和传递消息的函数。
         </p>
@@ -86,6 +86,27 @@
             <li>可以通过<code-txt>instanceof</code-txt>来确认实例是否属于构造函数</li>
         </ul>
         <p></p>
+        <h4>闭包定义常量的封装</h4>
+        <p>通过闭包函数作用域的特点，保护常量，达到开闭原则。</p>
+        <highlightjs lang="js" :code="demo6" />
+        <p>
+            <code-txt>PI</code-txt
+            >通过调用<code-txt>立即执行函数</code-txt>返回一个对象，对象中有个方法，用于获取函数的<code-txt>_pi</code-txt>值。而想要获取到值必须通过返回对象的<code-txt>get</code-txt>方法，无法修改其值。河阳的话可以很清晰的防止外部随意修改参数和函数。
+        </p>
+        <h3>模块模式</h3>
+        <ul>
+            <li>对象字面量表达式（立即执行函数）</li>
+            <li><code-txt>Module</code-txt>模式</li>
+            <li><code-txt>AMD</code-txt>模式</li>
+            <li><code-txt>Common</code-txt>模式</li>
+            <li><code-txt>ECMAScript Harmony</code-txt>模式</li>
+        </ul>
+        <p></p>
+        <h4><code-txt>Module</code-txt>模式</h4>
+        <p>
+            <code-txt>Module</code-txt
+            >模式是进一步模拟类的概念，通过这种方式，可以使一个单独对象拥有共有/私有的方法和变量，从而可以防止全局变量或函数的污染。
+        </p>
     </div>
 </template>
 
@@ -98,6 +119,12 @@ export default defineComponent({
     name: 'es6Page',
     components: { CodeTxt },
     setup() {
+        const myModules = (function () {
+            // 私有变量 外部无法访问
+            const myPrivate = '私有变量';
+            // 私有函数
+            function myMethod() {}
+        })();
         return { ...data };
     },
 });
