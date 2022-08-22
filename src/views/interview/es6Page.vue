@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-08-16 22:49:53
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-22 17:27:28
+ * @LastEditTime: 2022-08-22 22:51:26
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -151,6 +151,20 @@
             >其实通过自定义函数，在原有得逻辑下在插入需要得函数，实现在对象的属性在进行修改的时候来做需要的操作。而对于<code-txt>Proxy</code-txt>可以通过<code-txt>get</code-txt>获取值，在<code-txt>set</code-txt>设置值用于自己将要做的操作。而Vue3不用原来的API因为<code-txt>Proxy</code-txt>不需要一层一层递归为每个属性添加代理，直接就可以操作，性能更好，而且原本的API有时候更新不能监听到，而<code-txt>Proxy</code-txt>除了兼容性的缺点基本可以完美的监听到数据的改变。
         </p>
         <highlightjs lang="js" :code="demo15" />
+        <highlightjs lang="js" :code="demo16" />
+        <h2 class="project__title article-title">map, filter, reduce</h2>
+        <div class="article-tips warning">map、filter、reduce有什么用？</div>
+        <h3 class="project__title">map</h3>
+        <p>遍历原数组，遍历数组的每个元素都通过传入的函数进行转换最后再放入到新的数组中。</p>
+        <highlightjs lang="js" :code="demo17" />
+        <h3 class="project__title">filter</h3>
+        <p>遍历原数组，遍历数组的每个元素都通过传入的函数返回是true的最后再放入到新的数组中。</p>
+        <highlightjs lang="js" :code="demo18" />
+        <h3 class="project__title">reduce</h3>
+        <p>
+            类似于<code-txt>map</code-txt>、<code-txt>filter</code-txt>遍历原数组，但是<code-txt>reduce</code-txt>可以传递两个参数，即将遍历的函数体和初始参数，函数体传入回调参数为累计值、当前元素、当前索引和原数组。
+        </p>
+        <highlightjs lang="js" :code="demo19" />
     </div>
 </template>
 
@@ -163,31 +177,6 @@ export default defineComponent({
     name: 'es6Page',
     components: { CodeTxt },
     setup() {
-        function onWatch(target, setCb, getCb) {
-            const handler = {
-                get(t, p, r) {
-                    getCb(t, p);
-                    console.log(arguments);
-                    return Reflect.get(t, p, r);
-                },
-                set(t, p, v, r) {
-                    setCb(v, p);
-                    console.log(t, p, v, r);
-                    return Reflect.set(t, p, v, r);
-                },
-            };
-
-            return new Proxy(target, handler);
-        }
-
-        const obj = { a: 1 };
-
-        const watchObj = onWatch(
-            obj,
-            () => {},
-            () => {}
-        );
-
         return { ...data };
     },
 });

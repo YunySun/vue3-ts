@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-08-16 23:03:34
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-22 17:09:19
+ * @LastEditTime: 2022-08-22 22:50:41
  * @Profile: 一个比较废柴的前端开发
  */
 const demo1 = `console.log(a);
@@ -247,6 +247,41 @@ const demo15 = `
  */
 const p = new Proxy(target, handler);`;
 
+const demo16 = `function onWatch(target, setCb, getCb) {
+    const handler = {
+        get(t, p, r) {
+            getCb(t, p);
+            return Reflect.get(t, p, r);
+        },
+        set(t, p, v, r) {
+            setCb(p, v);
+            return Reflect.set(t, p, v, r);
+        },
+    };
+
+    return new Proxy(target, handler);
+}
+
+const obj = { a: 1 };
+
+const watchObj = onWatch(
+    obj,
+    (p, v) => {
+        console.log('监听到属性'+p+'值为：'+v);
+    },
+    (t, p) => {
+        console.log('属性'+p+'的值为：'+t[p]);
+    }
+);
+
+watchObj.b = 2; // 监听到属性b值为：2
+watchObj.b; // 属性b的值为：2`;
+
+const demo17 = `console.log([1, 2, 3].map((item) => item + 2)); // [3, 4, 5]`;
+const demo18 = `console.log([1, 2, 4, 9, 99].filter((item) => item > 4)); // [9, 99]`;
+const demo19 = `const sum = [1, 4, 9].reduce((add, current) => add + current, 10);
+console.log(sum); // 24`;
+
 export default {
     demo1,
     demo2,
@@ -263,4 +298,8 @@ export default {
     demo13,
     demo14,
     demo15,
+    demo16,
+    demo17,
+    demo18,
+    demo19,
 };
