@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-08-16 22:49:53
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-20 23:10:11
+ * @LastEditTime: 2022-08-22 17:27:28
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -105,8 +105,52 @@
         <h4><code-txt>Module</code-txt>模式</h4>
         <p>
             <code-txt>Module</code-txt
-            >模式是进一步模拟类的概念，通过这种方式，可以使一个单独对象拥有共有/私有的方法和变量，从而可以防止全局变量或函数的污染。
+            >模式是进一步模拟类的概念，通过这种方式，可以使一个单独对象拥有共有/私有的方法和变量，从而可以防止全局变量或函数的污染。将函数名和页面上其他定义的函数名冲突的可能性降低。
         </p>
+        <highlightjs lang="js" :code="demo7" />
+        <p>应用变形：Revealing Module（揭示模块）模式（require.js就是这样实现的）</p>
+        <highlightjs lang="js" :code="demo8" />
+        <p>通过<code-txt>Module</code-txt>模式可以很容易分辨那些函数变量是可以公开访问的。</p>
+        <h3>对象 通过对象<code-txt>defineProperty</code-txt>方法封装</h3>
+        <p>ECMAScript中有两个属性：数据属性和访问器属性。这是利用访问器属性封装，以打到对值的保护。</p>
+        <highlightjs lang="js" :code="demo9" />
+        <h3>类式封装</h3>
+        <highlightjs lang="js" :code="demo10" />
+        <h3 class="project__title">继承</h3>
+        <h4>原型继承和Class继承</h4>
+        <div class="article-tips warning">原型如何继承的？Class如何实现继承？本质是什么？</div>
+        <p>
+            在封装了解了JS是不具备类类型的，<code-txt>class</code-txt>其实和<code-txt>new</code-txt>差不多，<code-txt>class</code-txt>只是一个语法糖，其实还是函数。
+        </p>
+        <highlightjs lang="js" :code="demo11" />
+        <h4>组合继承</h4>
+        <highlightjs lang="js" :code="demo12" />
+        <p>
+            <code-txt>Biology.call(this)</code-txt
+            >继承了父类的属性，然后将Biology的实例赋值给子类的原型用于继承父类的函数。
+        </p>
+        <p>
+            组合继承可以传参，不会造成属性共享，并且可以继承了父类的函数，不足的话就是子类实例也多了父类的属性，存在内存浪费。
+        </p>
+        <h4>寄生组合继承</h4>
+        <p>
+            寄生组合继承是对组合继承的优化，组合继承主要缺点在继承父类势力函数的时候会多了属性，所以在于对于这个的优化。
+        </p>
+        <highlightjs language="js" :code="demo13" />
+        <h4>Class继承</h4>
+        <highlightjs language="js" :code="demo14" />
+        <h3 class="project__title">多态</h3>
+        <h2 class="project__title article-title">Proxy</h2>
+        <div class="article-tips warning">Proxy有什么用？</div>
+        <p>
+            Vue3.0通过<code-txt>Proxy</code-txt>来替换原来得<code-txt>Object.defineProperty</code-txt>来实现数据响应式
+            。ES6新增得功能。
+        </p>
+        <p>
+            <code-txt>Proxy</code-txt
+            >其实通过自定义函数，在原有得逻辑下在插入需要得函数，实现在对象的属性在进行修改的时候来做需要的操作。而对于<code-txt>Proxy</code-txt>可以通过<code-txt>get</code-txt>获取值，在<code-txt>set</code-txt>设置值用于自己将要做的操作。而Vue3不用原来的API因为<code-txt>Proxy</code-txt>不需要一层一层递归为每个属性添加代理，直接就可以操作，性能更好，而且原本的API有时候更新不能监听到，而<code-txt>Proxy</code-txt>除了兼容性的缺点基本可以完美的监听到数据的改变。
+        </p>
+        <highlightjs lang="js" :code="demo15" />
     </div>
 </template>
 
@@ -119,12 +163,31 @@ export default defineComponent({
     name: 'es6Page',
     components: { CodeTxt },
     setup() {
-        const myModules = (function () {
-            // 私有变量 外部无法访问
-            const myPrivate = '私有变量';
-            // 私有函数
-            function myMethod() {}
-        })();
+        function onWatch(target, setCb, getCb) {
+            const handler = {
+                get(t, p, r) {
+                    getCb(t, p);
+                    console.log(arguments);
+                    return Reflect.get(t, p, r);
+                },
+                set(t, p, v, r) {
+                    setCb(v, p);
+                    console.log(t, p, v, r);
+                    return Reflect.set(t, p, v, r);
+                },
+            };
+
+            return new Proxy(target, handler);
+        }
+
+        const obj = { a: 1 };
+
+        const watchObj = onWatch(
+            obj,
+            () => {},
+            () => {}
+        );
+
         return { ...data };
     },
 });

@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-08-16 23:03:34
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-20 17:14:59
+ * @LastEditTime: 2022-08-22 17:09:19
  * @Profile: 一个比较废柴的前端开发
  */
 const demo1 = `console.log(a);
@@ -59,4 +59,208 @@ const demo6 = `const PI = (function () {
 })();
 console.log(PI.get()); // 3.1415927`;
 
-export default { demo1, demo2, demo3, demo4, demo5, demo6 };
+const demo7 = `const myModules = (function () {
+    // 私有变量 外部无法访问
+    const myPrivate = '私有变量';
+    // 私有函数
+    function myMethod(txt) {
+        console.log('私有函数调用传值：', txt);
+    }
+    return {
+        // 公有配置
+        commonConf: {
+            common: '共有变量',
+            status: true,
+        },
+        // 根据配置信息输出
+        conf() {
+            // 输出私有变量
+            console.log('输出：', myPrivate);
+            // 调用私有函数
+            myMethod(this.commonConf.status ? '开启状态' : '关闭状态');
+        },
+    };
+})();
+
+// 调用输出函数
+myModules.conf();
+// 输出： 私有变量
+// 私有函数调用传值： 开启状态
+
+// 调用私有函数
+myModules.myMethod(); // TypeError: myModules.myMethod is not a function
+
+myModules.commonConf.status = false;
+myModules.conf();
+// 输出： 私有变量
+// 私有函数调用传值： 关闭状态`;
+
+const demo8 = `const myModule = (function () {
+    // 私有函数
+    function method1(txt) {
+        console.log('私有函数1输出：', txt);
+    }
+    function method2(txt) {
+        console.log('私有函数2输出：', txt);
+    }
+    // 将私有函数开放
+    return {
+        method1,
+        method2,
+    };
+})();`;
+
+const demo9 = `const person = {
+    name: 'Michael',
+};
+// 重新封装对象的属性 定义一个只能访问值 不能修改值的属性
+Object.defineProperty(person, 'age', {
+    value: new Date().getFullYear() - 1992,
+    get function() {
+        return this.age;
+    },
+});
+console.log(person.age);
+person.age = 18;
+console.log(person.age);
+// 30
+// 30`;
+
+const demo10 = `function ClassFunction(id, name, price) {
+    // 私有属性
+    const name = '';
+    const price = 0;
+    // 私有函数
+    function checkId() {}
+
+    // 公有属性
+    this.id = id;
+
+    // 特权函数 用于操作私有的函数和方法
+    this.setName = function () {};
+    this.setPrice = function () {};
+    this.getName = function () {};
+    this.getPrice = function () {};
+
+    // 公有函数
+    console.log(this);
+    if (this instanceof ClassFunction) {
+        console.log('this instanceof ClassFunction: ', this);
+        this.setName(name);
+        this.setPrice(price);
+    } else {
+        console.log('this not instanceof ClassFunction: ', this);
+        return new ClassFunction(id, name, price);
+    }
+}
+
+// 类静态公有属性和函数
+ClassFunction.commonAttr = '类属性';
+ClassFunction.commonFunc = function () {};
+
+// 实例公有属性函数
+ClassFunction.prototype = {
+    protoAttr: 'Prototype 属性',
+    protoFunc() {
+        console.log('Prototype Function');
+    },
+};
+
+const class1 = new ClassFunction(1, 'class1', 12);
+class1.commonAttr = '类';
+class1.protoAttr = 'Prototype1';
+console.log(class1.commonAttr); // 类
+console.log(class1.protoAttr); // Prototype1
+const class2 = new ClassFunction(2, 'class2', 13);
+console.log(class2.commonAttr); // undefined
+console.log(class2.protoAttr); // Prototype 属性
+`;
+
+const demo11 = `class ClassFunction {}
+console.log(ClassFunction instanceof Function); // true;`;
+
+const demo12 = `function Biology(species) {
+    this.species = species;
+}
+
+Biology.prototype.speak = function (speak) {
+    console.log(this.species+'说：'+speak);
+};
+
+function Human(species) {
+    Biology.call(this, species);
+}
+
+Human.prototype = new Biology();
+
+const human = new Human('人类');
+human.speak('你好'); // 人类说：你好
+console.log(human instanceof Biology); // true;`;
+
+const demo13 = `function Biology(species) {
+    this.species = species;
+}
+Biology.prototype.speak = function (speak) {
+    console.log(this.species+'说：'+speak);
+};
+
+function Human(species) {
+    Biology.call(this, species);
+}
+
+Human.prototype = Object.create(Biology.prototype, {
+    constructor: {
+        value: Human,
+        enumerable: false,
+        writable: true,
+        configurable: true,
+    },
+});
+
+const human = new Human('人类');
+human.speak('你好'); // 人类说：你好`;
+
+const demo14 = `class Biology {
+    constructor(species) {
+        this.species = species;
+    }
+
+    speak(speak) {
+        console.log(this.species+'说：'+speak);
+    }
+}
+
+class Human extends Biology {
+    constructor(species) {
+        super(species);
+    }
+}
+
+const human = new Human('人类');
+human.speak('你好');`;
+
+const demo15 = `
+/**
+ * Proxy
+ * @param target 需要代理的对象
+ * @param handler 用于对对象的操作 如自定义的set和get函数
+ */
+const p = new Proxy(target, handler);`;
+
+export default {
+    demo1,
+    demo2,
+    demo3,
+    demo4,
+    demo5,
+    demo6,
+    demo7,
+    demo8,
+    demo9,
+    demo10,
+    demo11,
+    demo12,
+    demo13,
+    demo14,
+    demo15,
+};
