@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-08-16 22:49:53
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-22 22:51:26
+ * @LastEditTime: 2022-08-23 16:36:32
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -140,6 +140,8 @@
         <h4>Class继承</h4>
         <highlightjs language="js" :code="demo14" />
         <h3 class="project__title">多态</h3>
+        <p>相同的操作在不同的对象上，起到不同的效果。如各个动物说话的声音、形态有所差距的。</p>
+        <highlightjs language="js" :code="demo20" />
         <h2 class="project__title article-title">Proxy</h2>
         <div class="article-tips warning">Proxy有什么用？</div>
         <p>

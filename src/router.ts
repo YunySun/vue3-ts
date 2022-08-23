@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-16 22:51:33
+ * @LastEditTime: 2022-08-23 17:15:55
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import commonLayout from './layout/commonLayout.vue';
@@ -147,6 +147,23 @@ export const routes: Array<RouteRecordRaw> = [
                 component: () => import('@/views/npm/highlightPage.vue'),
                 meta: {
                     title: 'Highlight.js',
+                },
+            },
+        ],
+    },
+    {
+        path: '/bug',
+        name: 'bug',
+        redirect: '/bug/npmError',
+        component: commonLayout,
+        meta: { title: 'Bug', icon: 'WarnTriangleFilled' },
+        children: [
+            {
+                path: 'npmError',
+                name: 'npmError',
+                component: () => import('@/views/bug/npmError.vue'),
+                meta: {
+                    title: 'npm启动报错',
                 },
             },
         ],

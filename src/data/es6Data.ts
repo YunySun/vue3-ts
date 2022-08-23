@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-08-16 23:03:34
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-22 22:50:41
+ * @LastEditTime: 2022-08-23 16:36:15
  * @Profile: 一个比较废柴的前端开发
  */
 const demo1 = `console.log(a);
@@ -282,6 +282,22 @@ const demo18 = `console.log([1, 2, 4, 9, 99].filter((item) => item > 4)); // [9,
 const demo19 = `const sum = [1, 4, 9].reduce((add, current) => add + current, 10);
 console.log(sum); // 24`;
 
+const demo20 = `function Human() {}
+Human.prototype.sound = function () {
+    console.log('你好呀');
+};
+function Dog() {}
+Dog.prototype.sound = function () {
+    console.log('汪汪汪~');
+};
+function makeSound(animal) {
+    if (animal && animal.sound instanceof Function) {
+        animal.sound();
+    }
+}
+makeSound(new Human()); // 你好呀
+makeSound(new Dog()); // 汪汪汪~`;
+
 export default {
     demo1,
     demo2,
@@ -302,4 +318,5 @@ export default {
     demo17,
     demo18,
     demo19,
+    demo20,
 };
