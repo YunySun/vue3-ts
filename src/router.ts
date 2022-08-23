@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-23 17:15:55
+ * @LastEditTime: 2022-08-23 22:32:58
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import commonLayout from './layout/commonLayout.vue';
@@ -130,6 +130,14 @@ export const routes: Array<RouteRecordRaw> = [
                 component: () => import('@/views/interview/es6Page.vue'),
                 meta: {
                     title: 'Es6',
+                },
+            },
+            {
+                path: 'async',
+                name: 'asyncPage',
+                component: () => import('@/views/interview/asyncPage.vue'),
+                meta: {
+                    title: 'Async',
                 },
             },
         ],
