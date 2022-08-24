@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-23 22:32:58
+ * @LastEditTime: 2022-08-24 09:52:32
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import commonLayout from './layout/commonLayout.vue';
@@ -106,7 +106,7 @@ export const routes: Array<RouteRecordRaw> = [
         name: 'interview',
         redirect: '/interview/basic',
         component: commonLayout,
-        meta: { title: '面试题', icon: 'Reading' },
+        meta: { title: '面试题', icon: 'EditPen' },
         children: [
             {
                 path: 'basic',
@@ -164,7 +164,7 @@ export const routes: Array<RouteRecordRaw> = [
         name: 'bug',
         redirect: '/bug/npmError',
         component: commonLayout,
-        meta: { title: 'Bug', icon: 'WarnTriangleFilled' },
+        meta: { title: 'Bug', icon: 'WarningFilled' },
         children: [
             {
                 path: 'npmError',

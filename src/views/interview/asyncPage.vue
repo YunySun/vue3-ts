@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-08-23 22:31:40
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-23 23:10:30
+ * @LastEditTime: 2022-08-24 17:22:46
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -26,16 +26,28 @@
         <p></p>
         <p>回调函数还有一些问题，如<code-txt>try catch</code-txt>来捕获错误，不可以直接<code-txt>return</code-txt>。</p>
         <h2 class="project__title article-title">Generator</h2>
+        <p><code-txt>Generator</code-txt>：一个可以控制函数执行的函数。</p>
+        <highlightjs lang="js" :code="demo3" />
+        <p>代码解析：</p>
+        <p>
+            <code-txt>Generator</code-txt
+            >函数和其他的函数不同，会返回一个迭代器。在执行一次<code-txt>next</code-txt>后，传参会被忽略 ，并且
+            会暂停在<code-txt>yield ()</code-txt
+            >处，并且返回值，下一次<code-txt>next</code-txt>，则将传参相当于上一个<code-txt>yield ()</code-txt
+            >返回值，不传参则<code-txt>yield ()</code-txt>返回的是<code-txt>undefined</code-txt>。一直到最后。
+        </p>
+        <p>可以将回调函数改为如下：</p>
+        <highlightjs lang="js" :code="demo4" />
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import data from '@/data/asyncData';
-import codeTxt from '@/components/tools/codeTxt.vue';
+import CodeTxt from '@/components/tools/codeTxt.vue';
 
 export default defineComponent({
-    components: { codeTxt },
+    components: { CodeTxt },
     name: 'asyncPage',
     setup() {
         return { ...data };
