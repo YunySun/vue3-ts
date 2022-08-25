@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-08-23 22:57:05
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-24 17:22:32
+ * @LastEditTime: 2022-08-25 17:05:40
  * @Profile: 一个比较废柴的前端开发
  */
 const demo1 = `setTimeout(() => {
@@ -40,9 +40,26 @@ g.next();
 g.next();
 g.next();`;
 
+const demo5 = `new Promise((resolve, reject) => {
+    resolve('success');
+    // 无效
+    reject('failed');
+});`;
+
+const demo6 = `console.log('Promise 前');
+new Promise(() => {
+    console.log('Promise回调函数');
+});
+console.log('Promise 后');
+// Promise 前
+// Promise回调函数
+// Promise 后`;
+
 export default {
     demo1,
     demo2,
     demo3,
     demo4,
+    demo5,
+    demo6,
 };
