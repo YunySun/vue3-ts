@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-08-23 22:31:40
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-25 17:08:54
+ * @LastEditTime: 2022-08-26 17:02:53
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -59,6 +59,36 @@
             ，并且是新的<code-txt>Promise</code-txt> ，
             原因也是因为状态不可变。可以在<code-txt>then</code-txt>的回调函数中使用<code-txt>return</code-txt>，这个值会被<code-txt>Promise.resolve()</code-txt>包装。
         </p>
+        <highlightjs lang="js" :code="demo7" />
+        <p><code-txt>Promise</code-txt>可以很好的解决回调地狱的问题。</p>
+        <highlightjs lang="js" :code="demo8" />
+        <p>缺点：无法取消<code-txt>Promise</code-txt>，错误只能通过<code-txt>catch</code-txt>回调函数捕获</p>
+        <h2 class="project__title article-title">async和await</h2>
+        <div class="article-tips warning">async和await有什么特点？他们的优缺点，await的原理是什么？</div>
+        <p>一个函数前加上一个<code-txt>async</code-txt>，那么该函数就会返回一个<code-txt>Promise</code-txt></p>
+        <highlightjs lang="js" :code="demo9" />
+        <p>
+            <code-txt>async</code-txt
+            >就是将函数返回值通过<code-txt>Promise.resolve()</code-txt>包裹，且<code-txt>await</code-txt>是只能在<code-txt>async</code-txt>存在的时候使用。
+        </p>
+        <highlightjs lang="js" :code="demo10" />
+        <p>通过打印发现之前一直<code-txt>console.log(data)</code-txt>打印的值是有问题的，但是这次确实能拿到值的</p>
+        <p>
+            <code-txt>async</code-txt
+            >和<code-txt>await</code-txt>是大部分异步的解决方案，相对于<code-txt>Promise</code-txt>不需要处理一堆<code-txt>then</code-txt>的调用链。缺点是如果内部异步代码之间没有关系的话却使用了的话会导致性能损耗。<code-txt>await</code-txt>将异步代码转换成同步代码。
+        </p>
+        <highlightjs lang="js" :code="demo11" />
+        <p>
+            通过上述代码，可以知道<code-txt>async</code-txt>并没有将函数变成异步的，在函数调用的时候会直接调用函数体，而之后发现先是打印的<code-txt>a</code-txt>自增后的值，可以知道<code-txt>await</code-txt>是异步操作，并且之后都是在异步完成后才运行，将后面的表达包装成<code-txt>Promise.resove(返回值)</code-txt>，然后在执行函数外的同步代码，在同步代码执行完毕后才执行异步代码。
+        </p>
+        <h2 class="project__title article-title">定时器函数</h2>
+        <div class="article-tips warning">setTimeout、setInterval和requestAnimationFrame有什么特点？</div>
+        <p>
+            <code-txt>setTimeout</code-txt
+            >是延时多久就多久执行。<code-txt>setInterval</code-txt>是每隔一段时间执行回调函数。不能保证在预期的时间执行任务。存在执行累积的问题。<code-txt>requestAnimationFrame</code-txt>自带函数节流功能，保证在16.6ms内执行一次，并且延迟效果是精确的，没有其他延时器不准的问题。
+        </p>
+        <p><code-txt>requestAnimationFrame</code-txt>实现的定时器</p>
+        <highlightjs lang="js" :code="demo12" />
     </div>
 </template>
 
