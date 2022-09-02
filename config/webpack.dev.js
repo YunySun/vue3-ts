@@ -3,16 +3,16 @@
  * @Author: 李昶
  * @Date: 2022-06-25 15:56:31
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-15 14:15:05
+ * @LastEditTime: 2022-08-30 14:30:14
  */
-const { resolve } = require('path');
+// const { resolve } = require('path');
 const { merge } = require('webpack-merge');
 const Common = require('./webpack.common');
 
-const paths = {
-    appSrc: resolve(__dirname, '../src'),
-    appDist: resolve(__dirname, '../build'),
-};
+// const paths = {
+//     appSrc: resolve(__dirname, '../src'),
+//     appDist: resolve(__dirname, '../build'),
+// };
 
 const devWebpackConfig = merge(Common, {
     mode: 'development',

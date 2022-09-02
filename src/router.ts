@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-24 09:52:32
+ * @LastEditTime: 2022-09-02 14:11:25
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import commonLayout from './layout/commonLayout.vue';
@@ -138,6 +138,22 @@ export const routes: Array<RouteRecordRaw> = [
                 component: () => import('@/views/interview/asyncPage.vue'),
                 meta: {
                     title: 'Async',
+                },
+            },
+            {
+                path: 'promise',
+                name: 'promisePage',
+                component: () => import('@/views/interview/promisePage.vue'),
+                meta: {
+                    title: 'Promise简易版',
+                },
+            },
+            {
+                path: 'eventLoop',
+                name: 'eventLoopPage',
+                component: () => import('@/views/interview/eventLoopPage.vue'),
+                meta: {
+                    title: 'Event Loop',
                 },
             },
         ],
