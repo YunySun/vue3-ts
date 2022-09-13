@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-09-02 14:11:25
+ * @LastEditTime: 2022-09-13 14:00:42
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import commonLayout from './layout/commonLayout.vue';
@@ -154,6 +154,14 @@ export const routes: Array<RouteRecordRaw> = [
                 component: () => import('@/views/interview/eventLoopPage.vue'),
                 meta: {
                     title: 'Event Loop',
+                },
+            },
+            {
+                path: 'advance',
+                name: 'advancePage',
+                component: () => import('@/views/interview/advancePage.vue'),
+                meta: {
+                    title: 'Advance',
                 },
             },
         ],
