@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-09-13 13:59:09
  * @LastEditors: 李昶
- * @LastEditTime: 2022-09-15 23:25:21
+ * @LastEditTime: 2022-09-16 17:00:01
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -26,6 +26,9 @@
         <h3>bind</h3>
         <p><code-txt>bind</code-txt>的区别是不直接调用，而是直接返回一个函数。并且返回的函数可以继续传值。</p>
         <highlightjs lang="js" :code="demo4" />
+
+        <h2 class="article-title project__title">new</h2>
+        <div class="article-tips warning">new的原理，通过new创建的对象和通过字面量创建的有什么区别？</div>
     </div>
 </template>
 
