@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-09-13 13:59:09
  * @LastEditors: 李昶
- * @LastEditTime: 2022-09-16 17:00:01
+ * @LastEditTime: 2022-09-16 17:22:34
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -29,6 +29,15 @@
 
         <h2 class="article-title project__title">new</h2>
         <div class="article-tips warning">new的原理，通过new创建的对象和通过字面量创建的有什么区别？</div>
+        <p>调用<code-txt>new</code-txt>的过程会发生什么：</p>
+        <ul>
+            <li>生成一个对象</li>
+            <li>链接到原型</li>
+            <li>绑定<code-txt>this</code-txt></li>
+            <li>返回新对象</li>
+        </ul>
+        <p></p>
+        <p>实现一个类似于<code-txt>new</code-txt>的函数</p>
     </div>
 </template>
 
