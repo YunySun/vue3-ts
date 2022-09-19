@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-09-14 11:17:37
  * @LastEditors: 李昶
- * @LastEditTime: 2022-09-15 23:24:29
+ * @LastEditTime: 2022-09-19 17:05:30
  * @Profile: 一个比较废柴的前端开发
  */
 const demo1 = `function func(x, y, z) {
@@ -104,9 +104,25 @@ let obj = {
 
 console.log(func.myBind(obj, 1, 2, 3)(4, 5));`;
 
+const demo5 = `function createInstance() {
+    let obj = {};
+    let ClassOBJ = [...arguments][0];
+    obj.__proto__ = ClassOBJ.prototype;
+    let result = ClassOBJ.apply(obj);
+    console.log(ClassOBJ);
+    return result instanceof Object ? result : obj;
+}
+
+function testClass(name) {
+    this.name = name;
+}
+
+let a = createInstance(testClass);`;
+
 export default {
     demo1,
     demo2,
     demo3,
     demo4,
+    demo5,
 };

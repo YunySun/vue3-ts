@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-09-13 13:59:09
  * @LastEditors: 李昶
- * @LastEditTime: 2022-09-16 17:22:34
+ * @LastEditTime: 2022-09-19 17:08:14
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -38,16 +38,27 @@
         </ul>
         <p></p>
         <p>实现一个类似于<code-txt>new</code-txt>的函数</p>
+        <ul>
+            <li>将新对象的<code-txt>__proto__</code-txt>指向传递构造函数的原型</li>
+            <li>改变<code-txt>this</code-txt>指向</li>
+            <li>最后返回值为对象</li>
+        </ul>
+        <p></p>
+        <highlightjs lang="js" :code="demo5" />
+        <p>
+            其实通过字面量创建对象，也是通过<code-txt>new Object()</code-txt
+            >生成的，而不同的是字面量创建是不需要通过作用链一层层的找到<code-txt>Object</code-txt>的。
+        </p>
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import data from '@/data/advanceData';
-import codeTxt from '@/components/tools/codeTxt.vue';
+import CodeTxt from '@/components/tools/codeTxt.vue';
 
 export default defineComponent({
-    components: { codeTxt },
+    components: { CodeTxt },
     name: 'advancePage',
     setup() {
         return {
