@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-05-24 09:18:19
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-12 11:23:58
+ * @LastEditTime: 2022-09-28 10:54:00
  */
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -52,7 +52,7 @@ module.exports = {
                     {
                         test: /\.(jpg|png|gif)$/,
                         include: paths.appSrc,
-                        type: 'asset',
+                        type: 'asset/resource',
                         parser: {
                             dataurlCondition: {
                                 maxSize: 8192,

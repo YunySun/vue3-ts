@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-09-13 14:00:42
+ * @LastEditTime: 2022-09-28 15:03:52
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import commonLayout from './layout/commonLayout.vue';
@@ -162,6 +162,31 @@ export const routes: Array<RouteRecordRaw> = [
                 component: () => import('@/views/interview/advancePage.vue'),
                 meta: {
                     title: 'Advance',
+                },
+            },
+        ],
+    },
+    {
+        path: '/rust',
+        name: 'rust',
+        redirect: '/rust/knowledge',
+        component: commonLayout,
+        meta: { title: 'Rust', icon: 'Tools' },
+        children: [
+            {
+                path: 'knowledge',
+                name: 'knowledgePage',
+                component: () => import('@/views/rust/knowledgePage.vue'),
+                meta: {
+                    title: '栈堆知识点',
+                },
+            },
+            {
+                path: 'basic',
+                name: 'basicPage',
+                component: () => import('@/views/rust/basicPage.vue'),
+                meta: {
+                    title: '需要了解的基本概念',
                 },
             },
         ],
