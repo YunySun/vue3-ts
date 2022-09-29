@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-09-28 15:03:52
+ * @LastEditTime: 2022-09-29 14:44:18
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import commonLayout from './layout/commonLayout.vue';
@@ -187,6 +187,14 @@ export const routes: Array<RouteRecordRaw> = [
                 component: () => import('@/views/rust/basicPage.vue'),
                 meta: {
                     title: '需要了解的基本概念',
+                },
+            },
+            {
+                path: 'install',
+                name: 'installPage',
+                component: () => import('@/views/rust/installPage.vue'),
+                meta: {
+                    title: '安装和了解Rust',
                 },
             },
         ],
