@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-09-29 14:38:47
  * @LastEditors: 李昶
- * @LastEditTime: 2022-10-03 17:48:42
+ * @LastEditTime: 2022-10-11 23:33:34
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -148,6 +148,19 @@
             usize 类型，不能为负数。
         </p>
         <h3 class="project__title">模式匹配</h3>
+        <p>
+            Rust模式匹配吸取了函数式编程语言的优点。它可以用于struct/enum中匹配部分或者全部的内容。如上文中设计的数据结构
+            Event
+        </p>
+        <highlightjs lang="rust" :code="demo10" />
+        <p>如上述代码可以直接对enum内层的数据进行匹配并且赋值，这比很多只支持简单模式匹配的语言可以省出一部分代码。</p>
+        <p>
+            除了使用match关键字做模式匹配外，还可以用if let/while
+            let做简单的匹配，如果上面的代码我们只关心Event::Message
+        </p>
+        <highlightjs lang="rust" :code="demo11" />
+        <p>Rust的模式匹配是一个很重要的语言特性，被广泛应用在状态机处理、消息处理和错误处理中。</p>
+        <h3 class="project__title">错误处理</h3>
     </div>
 </template>
 

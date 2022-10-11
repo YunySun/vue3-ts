@@ -200,6 +200,21 @@ const demo9 = `let arr = [1, 2, 3];
 assert_eq!(arr[..], [1, 2, 3]);
 assert_eq!(arr[0..=1], [1, 2]);`;
 
+const demo10 = `
+fn process_event(event: &Event) {
+    match event {
+        Event::Join((uid, _tid)) => println!("user {:?} joined", uid),
+        Event::Leave((uid, tid)) => println!("user {:?} left {:?}", uid, tid),
+        Event::Message((_, _, msg)) => println!("broadcast: {}", msg),
+    }
+}`;
+
+const demo11 = `fn process_message(event: &Event) {
+    if let Event::Message((_, _, msg)) = event {
+        println!("broadcast: {}", msg);
+    }
+}`;
+
 export default {
     demo1,
     demo2,
@@ -210,4 +225,6 @@ export default {
     demo7,
     demo8,
     demo9,
+    demo10,
+    demo11,
 };
