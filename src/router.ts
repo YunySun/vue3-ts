@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-09-29 14:44:18
+ * @LastEditTime: 2022-10-12 10:09:55
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import commonLayout from './layout/commonLayout.vue';
@@ -195,6 +195,14 @@ export const routes: Array<RouteRecordRaw> = [
                 component: () => import('@/views/rust/installPage.vue'),
                 meta: {
                     title: '安装和了解Rust',
+                },
+            },
+            {
+                path: 'cli',
+                name: 'implementCliPage',
+                component: () => import('@/views/rust/implementCliPage.vue'),
+                meta: {
+                    title: '实现一个CLI小工具',
                 },
             },
         ],

@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-09-29 14:38:47
  * @LastEditors: 李昶
- * @LastEditTime: 2022-10-11 23:33:34
+ * @LastEditTime: 2022-10-12 10:04:33
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -161,6 +161,34 @@
         <highlightjs lang="rust" :code="demo11" />
         <p>Rust的模式匹配是一个很重要的语言特性，被广泛应用在状态机处理、消息处理和错误处理中。</p>
         <h3 class="project__title">错误处理</h3>
+        <p>
+            Rust没有沿用C++/Java等诸多前辈使用的异常处理方式，而是借鉴Haskell，把错误封装在Result&lt;T,
+            E&gt;类型中，同时 提供了？操作符来传播错误。Result&lt;T,
+            E&gt;类型是一个泛型数据结构，T表示成功执行返回的结果，E代表错误类型。
+        </p>
+        <h3 class="project__title">Rust项目中的组织</h3>
+        <p>
+            当Rust代码规模越来越大时，就无法用单一的文件承载代码了，需要多个文件甚至多个目录协同工作，则需要通过mod来组织代码。
+        </p>
+        <p>
+            具体做法是：在项目的入口文件lib.rs/main.rs里，用mod来声明要加载的其它代码文件。如果模块内容比较多，可以放在
+            一个目录下 ，在该目录 下放一个mod.rs 引入该模块
+            的其他文件。这个文件和Python中的__init__.py类似。这样处理后，就可以用mod+目录名中引入这个模块了。
+        </p>
+        <p>
+            在rust里，一个项目也被称为一个crate。crate可以是可执行项目，也可以是一个库，可以通过cargo new &lt;name&gt;
+            -- lib来创建一个库。当crate里的代码改变时，这个crate需要被重新编译。
+        </p>
+        <p>在一个crate下，除了项目的源代码，单元测试和集成测试的代码也会放在crate中。</p>
+        <p>Rust的单元测试一般放在和被测代码相同的文件中，使用条件编译#[cfg(test)]来确保测试代码只在测试环境下编译。</p>
+        <highlightjs lang="rust" :code="demo12" />
+        <p>
+            集成测试一般放在tests目录下，和src平行。和单元测试不同，集成测试只能测试crate下的公开接口，编译时编译成单独的可执行文件。
+        </p>
+        <p>在crate下，如果要运行测试用例，可以使用cargo test。</p>
+        <p>
+            当代码规模继续增长，把所有代码放在一个crate里就不是一个好主意了，因为任何代码的修改都会导致这个crate重新编译，这样效率不高。我们可以使用workspace。
+        </p>
     </div>
 </template>
 

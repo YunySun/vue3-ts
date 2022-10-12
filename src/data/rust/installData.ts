@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-10-02 17:12:14
  * @LastEditors: 李昶
- * @LastEditTime: 2022-10-03 17:48:24
+ * @LastEditTime: 2022-10-12 10:02:56
  * @Profile: 一个比较废柴的前端开发
  */
 const demo1 = `cargo new rust-project // 创建新项目
@@ -215,6 +215,17 @@ const demo11 = `fn process_message(event: &Event) {
     }
 }`;
 
+const demo12 = `#[cfg(test)]
+mod test {
+    #[test]
+    fn it_works() {
+        assert_eq!(2 + 2, 4)
+    }
+}
+
+// 目录 tests/test.rs
+// cargo test`;
+
 export default {
     demo1,
     demo2,
@@ -227,4 +238,5 @@ export default {
     demo9,
     demo10,
     demo11,
+    demo12,
 };
