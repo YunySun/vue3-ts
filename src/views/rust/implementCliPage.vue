@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Author: 李昶
+ * @Date: 2022-10-12 22:11:07
+ * @LastEditors: 李昶
+ * @LastEditTime: 2022-10-18 23:39:37
+ * @Profile: 一个比较废柴的前端开发
+-->
 <template>
     <div class="cli-wrapper article-wrapper">
         <h2 class="project__title article-title">HTTPie</h2>
@@ -78,6 +86,8 @@
         <highlightjs lang="rust" :code="demo5" />
         <p>然后在 main 函数内部，我们根据子命令的类型，分别调用 get 和 post 函数做具体处理</p>
         <highlightjs lang="rust" :code="demo6" />
+        <p>全部代码</p>
+        <highlightjs lang="rust" :code="demo7" />
     </div>
 </template>
 
