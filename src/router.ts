@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-10-12 10:09:55
+ * @LastEditTime: 2022-10-22 16:47:44
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import commonLayout from './layout/commonLayout.vue';
@@ -202,7 +202,15 @@ export const routes: Array<RouteRecordRaw> = [
                 name: 'implementCliPage',
                 component: () => import('@/views/rust/implementCliPage.vue'),
                 meta: {
-                    title: '实现一个CLI小工具',
+                    title: '实现一个CLI小工具Httpie',
+                },
+            },
+            {
+                path: 'thumbor',
+                name: 'thumborPage',
+                component: () => import('@/views/rust/thumborPage.vue'),
+                meta: {
+                    title: '图片服务器',
                 },
             },
         ],
