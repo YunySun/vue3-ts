@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-10-22 16:42:16
  * @LastEditors: 李昶
- * @LastEditTime: 2022-10-23 17:19:33
+ * @LastEditTime: 2022-10-24 15:48:10
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -71,7 +71,7 @@
         <h3 class="project__title">Windows系统安装protoc</h3>
         <ul>
             <li>下载包地址https://github.com/protocolbuffers/protobuf/releases，下载的是protoc-21.8-win64.zip</li>
-            <li>将bin文件夹里的protoc.exe设置为环境变量，并且将protoc.exe文件拷贝到C:\Windows|System32文件夹中</li>
+            <li>将bin文件夹里的protoc.exe设置为环境变量，并且将protoc.exe文件拷贝到C:\Windows\System32文件夹中</li>
             <li>在终端输入protoc --version 打印出libprotoc 3.21.8表示安装成功</li>
         </ul>
         <p></p>
