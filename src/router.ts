@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-10-26 15:45:18
+ * @LastEditTime: 2022-10-26 23:24:30
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import commonLayout from './layout/commonLayout.vue';
@@ -219,6 +219,14 @@ export const routes: Array<RouteRecordRaw> = [
                 component: () => import('@/views/rust/01BasicPage.vue'),
                 meta: {
                     title: '值的生杀大权到底在谁手上？',
+                },
+            },
+            {
+                path: 'basic/02',
+                name: '02BasicPage',
+                component: () => import('@/views/rust/02BasicPage.vue'),
+                meta: {
+                    title: '所有权：值的借用是如何工作的？',
                 },
             },
         ],

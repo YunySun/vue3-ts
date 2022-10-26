@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-10-26 15:43:32
  * @LastEditors: 李昶
- * @LastEditTime: 2022-10-26 17:28:28
+ * @LastEditTime: 2022-10-26 23:21:26
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -86,6 +86,38 @@
             trait，那么它就会使用Copy语义。这样，在你赋值或者传参时，值会自动按位拷贝（浅拷贝）。
         </p>
         <p>如果你不希望值的所有权被转移，又无法使用Copy语义，那你可以“借用”数据。</p>
+        <h3 class="project__title">Copy语义和Copy trait</h3>
+        <p>
+            代码编译器给出的错误，提示的是data的类型Vec没有实现Copy trait，在赋值或者函数调用的时候无法
+            Copy，于是就按默认使用Move语义。而Move之后，原先的变量data无法访问，所以出错。所以只要值的类型实现了Copy
+            trait，就可以自动使用Copy语义进行拷贝。
+        </p>
+        <p>如何实现Copy trait</p>
+        <highlightjs lang="rust" :code="demo3" />
+        <ul>
+            <li>原生类型，包含函数、不可变引用和裸指针实现了Copy</li>
+            <li>数组和元组，如果其内部的数据结构实现了 Copy，那么它们也实现了 Copy；</li>
+            <li>可变引用没有实现 Copy；</li>
+            <li>非固定大小的数据结构，没有实现 Copy。</li>
+        </ul>
+        <p></p>
+        <h3 class="project__title">小结</h3>
+        <ul>
+            <li>
+                所有权：一个值只能被一个变量所拥有，且同一时刻只能有一个所有者，当所有者离开作用域，其拥有的值被丢弃，内存得到释放。
+            </li>
+            <li>Move语义：赋值或者传参会导致值 Move，所有权被转移，一旦所有权转移，之前的变量就不能访问。</li>
+            <li>
+                Copy语义：如果值实现了Copy trait，那么赋值或传参会使用Copy
+                语义，相应的值会被按位拷贝（浅拷贝），产生新的值。
+            </li>
+        </ul>
+        <p></p>
+        <p>
+            通过单一所有权模式，Rust
+            解决了堆内存过于灵活、不容易安全高效地释放的问题，不过所有权模型也引入了很多新的概念，比如Move/Copy语义。
+        </p>
+        <p>Rust 通过单一所有权来限制任意引用的行为</p>
     </div>
 </template>
 
