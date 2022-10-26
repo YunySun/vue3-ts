@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-10-22 16:47:44
+ * @LastEditTime: 2022-10-26 15:45:18
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import commonLayout from './layout/commonLayout.vue';
@@ -211,6 +211,14 @@ export const routes: Array<RouteRecordRaw> = [
                 component: () => import('@/views/rust/thumborPage.vue'),
                 meta: {
                     title: '图片服务器',
+                },
+            },
+            {
+                path: 'basic/01',
+                name: '01BasicPage',
+                component: () => import('@/views/rust/01BasicPage.vue'),
+                meta: {
+                    title: '值的生杀大权到底在谁手上？',
                 },
             },
         ],
