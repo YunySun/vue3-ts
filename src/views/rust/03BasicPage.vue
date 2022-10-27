@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-10-27 16:37:12
  * @LastEditors: 李昶
- * @LastEditTime: 2022-10-27 17:23:58
+ * @LastEditTime: 2022-10-27 23:56:03
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -60,7 +60,38 @@
         </ul>
         <p></p>
         <h3 class="project__title">实现 DAG</h3>
-        <p>现在我们用Rc来实现之前无法实现的DAG。</p>
+        <p>现在用Rc来实现之前无法实现的DAG。</p>
+        <p>
+            假设Node就只包含id和指向下游的指针，因为DAG中的一个节点可能被多个其它节点指向，所以使用Rc&lt;Node&gt;来表述它；一个节点可能没有下游节点，所以使用Option&lt;Rc&lt;Node&gt;&gt;来描述它。
+        </p>
+        <ul>
+            <li>new()：建立一个新的 Node。</li>
+            <li>update_downstream()：设置Node的downstream。</li>
+            <li>get_downstream()：clone一份Node里的downstream。</li>
+        </ul>
+        <p></p>
+        <highlightjs lang="rust" :code="demo4" />
+        <h3 class="project__title">RefCell</h3>
+        <p class="article-tips">整个 DAG 在创建完成后还能修改么？</p>
+        <p>在上述代码的main函数中，修改Node3使其指向一个新的节点Node</p>
+        <highlightjs lang="rust" :code="demo5" />
+        <p>
+            编译失败并且提示“node3 cannot borrow as
+            mutable”。这是因为Rc是一个只读的引用计数器，无法拿到Rc结构内部数据的可变引用，来修改这个数据。和Rc类似，RefCell也绕过了Rust编译器的静态检查，允许我们在运行时，对某个只读数据进行可变借用。
+        </p>
+        <h3 class="project__title">内部可变性</h3>
+        <p>
+            当我们使用let
+            mut显式地声明一个可变的值，或者，用&mut声明一个可变引用时，编译器可以在编译时进行严格的检查，保证只有可变的值或者可变的引用，才能修改内部的数据，这被称作外部可变性，外部可变性通过mut关键字声明。但是这样还是不够灵活，有时候希望可以绕开这个编译时的检查，对未申明成mut的值或者引用，也想进行修改，就是说在编译器眼里，值是只读的，但是在运行的时候，这个值可以得到可变借用，从而修改内部的数据，这就是RefCell用到的地方。
+        </p>
+        <highlightjs lang="rust" :code="demo6" />
+        <p>
+            从上述代码知道data是一个RefCell，其初始值为1.并且没有将data声明为可变变量。之后可以通过RefCell的borrow_mut方法获取可变的内部引用，并对其进行自增的操作。最后通过RefCell的borrow方法，获得一个不可变的内部引用，并且自增得到值为2。
+        </p>
+        <div class="article-tips">为什么要把获取和操作可变借用的两句代码，用花括号分装到一个作用域下？</div>
+        <p>
+            因为根据所有权的规则，同一个作用域下，不能同时有活跃的可变借用和不可变借用。通过花括号明确的缩小了可变借用的生命周期，不至于和后续的不可变借用冲突。
+        </p>
     </div>
 </template>
 
