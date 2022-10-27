@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-10-26 23:24:30
+ * @LastEditTime: 2022-10-27 16:38:05
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import commonLayout from './layout/commonLayout.vue';
@@ -227,6 +227,14 @@ export const routes: Array<RouteRecordRaw> = [
                 component: () => import('@/views/rust/02BasicPage.vue'),
                 meta: {
                     title: '所有权：值的借用是如何工作的？',
+                },
+            },
+            {
+                path: 'basic/03',
+                name: '03BasicPage',
+                component: () => import('@/views/rust/03BasicPage.vue'),
+                meta: {
+                    title: '所有权：一个值可以有多个所有者么？',
                 },
             },
         ],
