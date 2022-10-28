@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-10-27 16:38:05
+ * @LastEditTime: 2022-10-28 15:46:51
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import commonLayout from './layout/commonLayout.vue';
@@ -235,6 +235,14 @@ export const routes: Array<RouteRecordRaw> = [
                 component: () => import('@/views/rust/03BasicPage.vue'),
                 meta: {
                     title: '所有权：一个值可以有多个所有者么？',
+                },
+            },
+            {
+                path: 'basic/04',
+                name: '04BasicPage',
+                component: () => import('@/views/rust/04BasicPage.vue'),
+                meta: {
+                    title: '生命周期：你创建的值究竟能活多久？',
                 },
             },
         ],
