@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Author: 李昶
+ * @Date: 2022-10-30 17:12:57
+ * @LastEditors: 李昶
+ * @LastEditTime: 2022-10-30 18:30:39
+ * @Profile: 一个比较废柴的前端开发
+-->
 <template>
     <div class="basic-04-wrapper article-wrapper">
         <h2 class="project__title article-title">生命周期：你创建的值究竟能活多久？</h2>
@@ -21,16 +29,33 @@
             <li>所以，函数指针的生命周期也是静态的，因为函数在Text段中，只要进程活着，其内存一直存在。</li>
         </ul>
         <h3 class="project__title">编译器如何识别生命周期</h3>
+        <p>
+            x引用内存作用域中创建的变量y。变量从开始定义到其作用域饥饿书的这段时间，则是它的生命周期，所以x的生命周期大于y的生命周期，则x引用y编译期则报错。
+        </p>
+        <highlightjs lang="rust" :code="demo1" />
+        <p>
+            y和x处在同一个作用域下，x引用y，则x的声明周期和y的生命周期是同时结束的，所以y的生命周期是大于x的，x引用y则没报错。
+        </p>
+        <highlightjs lang="rust" :code="demo2" />
+        <p>main函数创建2个String，然后调用max函数比较大小。max函数接收2个字符串引用，返回较大的字符串的引用</p>
+        <highlightjs lang="rust" :code="demo3" />
+        <p>这段代码报错“expected named lifetime parameter”，编译器在编译max函数时，无法判断s1，s2和返回的生命周期。</p>
+        <p>
+            这段代码在main函数里s1和s2两个值的生命周期一致，并且同时引入max函数后，无论谁被返回，生命周期都不会超过s1或者s2的，但是还是报错了。
+        </p>
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import data from '@/data/rust/04BasicData';
 
 export default defineComponent({
     name: '04BasicPage',
     setup() {
-        return {};
+        return {
+            ...data,
+        };
     },
 });
 </script>
