@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-10-28 15:46:51
+ * @LastEditTime: 2022-10-31 16:08:10
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import commonLayout from './layout/commonLayout.vue';
@@ -243,6 +243,14 @@ export const routes: Array<RouteRecordRaw> = [
                 component: () => import('@/views/rust/04BasicPage.vue'),
                 meta: {
                     title: '生命周期：你创建的值究竟能活多久？',
+                },
+            },
+            {
+                path: 'basic/05',
+                name: '04BasicPage',
+                component: () => import('@/views/rust/05BasicPage.vue'),
+                meta: {
+                    title: '内存管理',
                 },
             },
         ],
