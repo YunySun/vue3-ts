@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-11-01 09:53:32
  * @LastEditors: 李昶
- * @LastEditTime: 2022-11-01 17:17:02
+ * @LastEditTime: 2022-11-02 17:17:37
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -55,17 +55,57 @@
         <p>
             Rust的原生类型包括字符、整数、浮点数、布尔值、数组（array）、元组（tuple）、切片（slice）、指针、引用、函数等
         </p>
-        <img src="../../assets/img/16.png" width="1200" />
+        <img src="../../assets/img/16.png" width="800" />
         <p>在原生类型的基础上，Rust 标准库还支持非常丰富的组合类型</p>
-        <img src="../../assets/img/17.png" width="1200" />
+        <img src="../../assets/img/17.png" width="800" />
+        <h3 class="project__title">类型推导</h3>
+        <p>
+            作为静态类型系统的语言，虽然能够在编译期保证类型的安全，但一个很大的不便是，代码撰写起来很繁杂，到处都要进行类型的声明。Rust的数据类型相当多，所以，为了减轻开发者的负担，Rust支持局部的类型推导。
+        </p>
+        <p>
+            在一个作用域之内，Rust可以根据变量使用的上下文，推导出变量的类型，这样我们就不需要显式地进行类型标注了。比如这段代码，创建一个BTreeMap后，往这个map里添加了key为“hello”、value为“world”的值
+        </p>
+        <highlightjs lang="rust" :code="demo1" />
+        <p>
+            Rust编译器可以从上下文中推导出，BTreeMap的类型K和V都是字符串引用&str，所以这段代码可以编译通过，然而，如果你把insert语句注释去掉，Rust编译器就会报错：“type
+            annotations needed for `BTreeMap&lt;K,
+            V&gt;`”。Rust编译器需要足够的上下文来进行类型推导，所以有些情况下，编译器无法推导出合适的类型。
+        </p>
+        <highlightjs lang="rust" :code="demo2" />
+        <p>
+            collect是Iterator
+            trait的方法，它把一个iterator转换成一个集合。因为很多集合类型都实现了iterator，所以这里的collect
+            的返回值无法判断。所以代码提示consider giving `even_numbers` an explicit type: `:
+            _`。这里编译器只是无法推断出集合类型，但集合类型内部元素的类型，还是可以根据上下文得出。
+        </p>
+        <highlightjs lang="rust" :code="demo3" />
+        <p>除了给变量一个显式的类型外，我们也可以让 collect 返回一个明确的类型。</p>
+        <highlightjs lang="rust" :code="demo4" />
+        <p>在泛型函数后使用::<span v-lr>T</span>来强制使用类型T，这种写法被称为turbofish。</p>
+        <highlightjs lang="rust" :code="demo5" />
+        <p>
+            turbofish的写法在很多场景都有优势，因为在某些上下文中，你想直接把一个表达式传递给一个函数或者当成一个作用域的返回值。
+        </p>
+        <p>即使上下文中含有类型的信息，也需要开发者为变量提供类型，比如常量和静态变量的定义。</p>
+        <highlightjs lang="rust" :code="demo6" />
+        <p>
+            这可能是因为const/static主要用于定义全局变量，它们可以在不同的上下文中使用，所以为了代码的可读性，需要明确的类型声明。
+        </p>
+        <h3 class="project__title">用泛型实现参数多态</h3>
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import data from '@/data/rust/06BasicData';
 
 export default defineComponent({
     name: '06BasicPage',
+    setup() {
+        return {
+            ...data,
+        };
+    },
 });
 </script>
 

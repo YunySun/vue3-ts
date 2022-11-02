@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-05-24 11:01:11
  * @LastEditors: 李昶
- * @LastEditTime: 2022-08-11 16:18:45
+ * @LastEditTime: 2022-11-02 16:54:08
  */
 import { createApp } from 'vue';
 // npm i -S pinia
@@ -30,3 +30,12 @@ Object.keys(ElementPlusIconsVue).forEach((item) => {
 // }
 
 app.use(createPinia()).use(router).mount('#app');
+
+app.directive('lr', {
+    /* 自定义指令钩子 */
+    /* eslint no-param-reassign: "error" */
+    mounted: (el) => {
+        console.dir(el);
+        el.innerHTML = `&lt;${el.innerHTML}&gt;`;
+    },
+});
