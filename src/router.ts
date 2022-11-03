@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-11-01 09:54:58
+ * @LastEditTime: 2022-11-03 15:41:52
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import commonLayout from './layout/commonLayout.vue';
@@ -259,6 +259,14 @@ export const routes: Array<RouteRecordRaw> = [
                 component: () => import('@/views/rust/06BasicPage.vue'),
                 meta: {
                     title: '类型系统',
+                },
+            },
+            {
+                path: 'basic/07',
+                name: '07BasicPage',
+                component: () => import('@/views/rust/07BasicPage.vue'),
+                meta: {
+                    title: 'trait定义接口',
                 },
             },
         ],
