@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-11-03 16:11:25
  * @LastEditors: 李昶
- * @LastEditTime: 2022-11-03 17:28:21
+ * @LastEditTime: 2022-11-03 22:34:30
  * @Profile: 一个比较废柴的前端开发
  */
 const demo1 = `pub trait Write {
@@ -67,8 +67,7 @@ fn main() {
     let mut buf = BufBuilder::new();
     buf.write_all(b"hello world").unwrap();
     println!("{:?}", buf);
-}
-`;
+}`;
 
 export default {
     demo1,

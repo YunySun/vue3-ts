@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-11-03 15:40:14
  * @LastEditors: 李昶
- * @LastEditTime: 2022-11-03 16:49:26
+ * @LastEditTime: 2022-11-03 22:44:55
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -28,6 +28,13 @@
         <p>
             self在用作方法的第一个参数时，实际上是self:Self的简写，所以&self是self:&Self,而&mut self是self:&mut Self。
         </p>
+        <highlightjs lang="rust" :code="demo2" />
+        <p>
+            从代码中，实现了write和flush方法，其他方法都用缺省实现，这样BufBuilder对Write
+            trait的实现是完整的。如果没有实现write或者flush，Rust编译器会报错，你可以自己尝试一下。数据结构一旦实现了某个trait，那么这个trait内部的方法都可以被使用，比如这里我们调用了buf.write_all()。write_all接受两个参数：&mut
+            self和&[u8]，第一个参数传递的是buf这个变量的可变引用，第二个参数传递的是b"Hello world!"。
+        </p>
+        <h3 class="project__title">trait练习</h3>
     </div>
 </template>
 
