@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-11-03 16:11:25
  * @LastEditors: 李昶
- * @LastEditTime: 2022-11-04 17:11:59
+ * @LastEditTime: 2022-11-07 11:43:30
  * @Profile: 一个比较废柴的前端开发
  */
 const demo1 = `pub trait Write {
@@ -217,6 +217,186 @@ const demo10 = `pub trait Add<Rhs = Self> {
     fn add(self, rhs: Rhs) -> Self::Output;
 }`;
 
+const demo11 = `use std::ops::Add;
+
+#[derive(Debug)]
+struct Complex {
+    real: f64,
+    imagine: f64,
+}
+
+impl Complex {
+    pub fn new(real: f64, imagine: f64) -> Self {
+        Self { real, imagine }
+    }
+}
+
+impl Add for Complex {
+    type Output = Self;
+    fn add(self, rhs: Self) -> Self::Output {
+        let real = self.real + rhs.real;
+        let imagine = self.imagine + rhs.imagine;
+        Self::new(real, imagine)
+    }
+}
+
+fn main() {
+    let c1 = Complex::new(1.0, 1f64);
+    let c2 = Complex::new(2 as f64, 3.0);
+    println!("{:?}", c1 + c2);
+    println!("{:?}", c1 + c2); // 报错 无法编译
+}`;
+
+const demo12 = `// 如果不想移动所有权，可以使用&Complex实现add，这样可以做&c1+&c2
+impl Add for &Complex {
+    // 所以返回值不是Self了，因为此时的Self是&Complex
+    type Output = Complex;
+    fn add(self, rhs: Self) -> Self::Output {
+        let real = self.real + rhs.real;
+        let imagine = self.imagine + rhs.imagine;
+        Complex::new(real, imagine)
+    }
+}
+
+fn main() {
+    let c1 = Complex::new(1.0, 1f64);
+    let c2 = Complex::new(2 as f64, 3.0);
+    println!("{:?}", &c1 + &c2);
+    println!("{:?}", &c1 + &c2); 
+}`;
+
+const demo13 = `// 因为Add<Rhs=Self>是个泛型的trait，所以可以为Complex实现Add<f64>
+impl Add<f64> for &Complex {
+    type Output = Complex;
+    fn add(self, rhs: f64) -> Self::Output {
+        let real = self.real + rhs;
+        Complex::new(real, self.imagine)
+    }
+}
+
+fn main() {
+    let c1 = Complex::new(1.0, 1f64);
+    let c2 = Complex::new(2 as f64, 3.0);
+    println!("{:?}", &c1 + &c2);
+    println!("{:?}", &c1 + &c2);
+    println!("{:?}", &c1 + 5.0);
+}`;
+
+const demo14 = `impl<T: ?Sized> StreamExt for T where T: Stream {}`;
+
+const demo15 = `struct Cat;
+struct Dog;
+
+trait Animal {
+    fn name(&self) -> &'static str;
+}
+
+impl Animal for Cat {
+    fn name(&self) -> &'static str {
+        "Cat"
+    }
+}
+
+impl Animal for Dog {
+    fn name(&self) -> &'static str {
+        "Dog"
+    }
+}
+
+fn animal_name(animal: impl Animal) -> &'static str {
+    animal.name()
+}
+
+fn main() {
+    let cat = Cat;
+    println!("cat: {}", animal_name(cat));
+}`;
+
+const demo16 = `fn animal_name(animal: T:Animal) -> &'static str;`;
+
+const demo17 = `pub trait Formatter {
+    fn format(&self, input: &mut String) -> bool;
+}
+
+struct MarkdownFormatter;
+impl Formatter for MarkdownFormatter {
+    fn format(&self, input: &mut String) -> bool {
+        input.push_str("\nformatted with Markdown formatter");
+        true
+    }
+}
+
+struct RustFormatter;
+impl Formatter for RustFormatter {
+    fn format(&self, input: &mut String) -> bool {
+        input.push_str("\nformatted with Rust formatter");
+        true
+    }
+}
+
+struct HtmlFormatter;
+impl Formatter for HtmlFormatter {
+    fn format(&self, input: &mut String) -> bool {
+        input.push_str("\nformatted with HTML formatter");
+        true
+    }
+}`;
+
+const demo18 = `pub fn format(input: &mut String, formatters: Vec<???>) {
+    for formatter in formatters {
+        formatter.format(input);
+    }
+}`;
+
+const demo19 = `pub fn format(input: &mut String, formatters: Vec<&dyn Formatter>) {
+    for formatter in formatters {
+        formatter.format(input);
+    }
+}`;
+
+const demo20 = `pub trait Formatter {
+    fn format(&self, input: &mut String) -> bool;
+}
+
+struct MarkdownFormatter;
+impl Formatter for MarkdownFormatter {
+    fn format(&self, input: &mut String) -> bool {
+        input.push_str("\nformatted with Markdown formatter");
+        true
+    }
+}
+
+struct RustFormatter;
+impl Formatter for RustFormatter {
+    fn format(&self, input: &mut String) -> bool {
+        input.push_str("\nformatted with Rust formatter");
+        true
+    }
+}
+
+struct HtmlFormatter;
+impl Formatter for HtmlFormatter {
+    fn format(&self, input: &mut String) -> bool {
+        input.push_str("\nformatted with HTML formatter");
+        true
+    }
+}
+
+pub fn format(input: &mut String, formatters: Vec<&dyn Formatter>) {
+    for formatter in formatters {
+        formatter.format(input);
+    }
+}
+
+fn main() {
+    let mut text = "hello world".to_string();
+    let html: &dyn Formatter = &HtmlFormatter;
+    let rust: &dyn Formatter = &RustFormatter;
+    let formatters = vec![html, rust];
+    format(&mut text, formatters);
+    println!("text: {}", text);
+}`;
+
 export default {
     demo1,
     demo2,
@@ -228,4 +408,14 @@ export default {
     demo8,
     demo9,
     demo10,
+    demo11,
+    demo12,
+    demo13,
+    demo14,
+    demo15,
+    demo16,
+    demo17,
+    demo18,
+    demo19,
+    demo20,
 };
