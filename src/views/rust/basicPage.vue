@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-09-28 15:03:17
  * @LastEditors: 李昶
- * @LastEditTime: 2022-09-28 23:14:16
+ * @LastEditTime: 2023-01-10 10:38:28
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -243,7 +243,7 @@ import { defineComponent } from 'vue';
 import data from '@/data/rust/basicData';
 
 export default defineComponent({
-    name: 'basicPage',
+    name: 'rustBasicPage',
     setup() {
         return {
             ...data,

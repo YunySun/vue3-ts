@@ -6,6 +6,14 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     CodeTxt: typeof import('./src/components/tools/codeTxt.vue')['default']
+    ElButton: typeof import('element-plus/es')['ElButton']
+    ElInput: typeof import('element-plus/es')['ElInput']
+    ElTable: typeof import('element-plus/es')['ElTable']
+    ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
+    ElTabPane: typeof import('element-plus/es')['ElTabPane']
+    ElTabs: typeof import('element-plus/es')['ElTabs']
+    ElTimeline: typeof import('element-plus/es')['ElTimeline']
+    ElTimelineItem: typeof import('element-plus/es')['ElTimelineItem']
     LifecycleComponent: typeof import('./src/components/lifecycleComponent.vue')['default']
     ProvideComponent: typeof import('./src/components/provideComponent.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

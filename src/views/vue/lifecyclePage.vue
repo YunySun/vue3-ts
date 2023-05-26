@@ -2,8 +2,8 @@
  * @Description: V3组合式生命周期
  * @Author: 李昶
  * @Date: 2022-08-05 17:01:17
- * @LastEditors: 李昶
- * @LastEditTime: 2022-08-08 14:08:15
+ * @LastEditors: 虾饺
+ * @LastEditTime: 2023-05-23 14:45:52
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -57,31 +57,25 @@ export default defineComponent({
         const beforeUpdateTimestamp = ref<string>('');
         const updatedTimestamp = ref<string>('');
         console.log(`setup时间戳:${setupTimestamp.value}`);
-
         onBeforeMount(() => {
             beforeMountTimestamp.value = `${new Date().getTime()}`;
             console.log(`beforeMount时间戳:${beforeMountTimestamp.value}`);
         });
-
         onMounted(() => {
             mountedTimestamp.value = `${new Date().getTime()}`;
             console.log(`mounted时间戳:${mountedTimestamp.value}`);
         });
-
         onBeforeUpdate(() => {
             beforeUpdateTimestamp.value = `${new Date().getTime()}`;
             console.log(`beforeUpdate时间戳:${beforeUpdateTimestamp.value}`);
         });
-
         onUpdated(() => {
             updatedTimestamp.value = `${new Date().getTime()}`;
             console.log(`updated时间戳:${updatedTimestamp.value}`);
         });
-
         function countIncrease() {
             count.value += 1;
         }
-
         return {
             count,
             setupTimestamp,

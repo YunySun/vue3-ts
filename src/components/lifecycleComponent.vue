@@ -2,8 +2,8 @@
  * @Description: V3组合式生命周期
  * @Author: 李昶
  * @Date: 2022-08-05 17:01:17
- * @LastEditors: 李昶
- * @LastEditTime: 2022-08-08 13:47:00
+ * @LastEditors: 虾饺
+ * @LastEditTime: 2023-05-23 14:43:30
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -23,7 +23,7 @@
 <script lang="ts">
 import { defineComponent, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, ref } from 'vue';
 
-export default defineComponent({
+export default {
     name: 'lifecyclePage',
     // setup不需要beforeCreate created生命周期钩子函数
     data() {
@@ -44,7 +44,7 @@ export default defineComponent({
         this.createdTimestamp = `${new Date().getTime()}`;
         console.log(`子组件created时间戳:${this.createdTimestamp}`);
     },
-    setup() {
+    setup(props) {
         const setupTimestamp = ref<string>(`${new Date().getTime()}`);
         const beforeMountTimestamp = ref<string>('');
         const mountedTimestamp = ref<string>('');
@@ -63,6 +63,7 @@ export default defineComponent({
         });
 
         onBeforeUpdate(() => {
+            console.log(props.childData);
             beforeUpdateTimestamp.value = `${new Date().getTime()}`;
             console.log(`子组件beforeUpdate时间戳:${beforeUpdateTimestamp.value}`);
         });
@@ -74,7 +75,7 @@ export default defineComponent({
 
         return { setupTimestamp, beforeMountTimestamp, mountedTimestamp, beforeUpdateTimestamp, updatedTimestamp };
     },
-});
+};
 </script>
 
 <style></style>

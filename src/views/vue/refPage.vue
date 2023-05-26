@@ -155,12 +155,12 @@ export default {
 }
 
 .user-wrapper {
-    p + p {
+    p+p {
         margin-top: 10px;
     }
 }
 
-.el-input + .el-input {
+.el-input+.el-input {
     margin-top: 20px;
 }
 

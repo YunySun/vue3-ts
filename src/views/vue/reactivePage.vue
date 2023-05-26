@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: 李昶
  * @Date: 2022-08-04 16:41:05
- * @LastEditors: 李昶
- * @LastEditTime: 2022-08-09 10:20:05
+ * @LastEditors: 虾饺
+ * @LastEditTime: 2023-05-23 14:10:12
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -84,7 +84,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .reactive-wrapper {
-    .el-input + .el-input {
+    .el-input+.el-input {
         margin-top: 20px;
     }
 }

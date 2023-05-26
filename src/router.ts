@@ -3,7 +3,7 @@
  * @Author: 李昶
  * @Date: 2022-06-22 21:36:52
  * @LastEditors: 李昶
- * @LastEditTime: 2022-11-15 14:16:16
+ * @LastEditTime: 2023-01-10 10:38:12
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import commonLayout from './layout/commonLayout.vue';
@@ -183,7 +183,7 @@ export const routes: Array<RouteRecordRaw> = [
             },
             {
                 path: 'basic',
-                name: 'basicPage',
+                name: 'rustBasicPage',
                 component: () => import('@/views/rust/basicPage.vue'),
                 meta: {
                     title: '需要了解的基本概念',

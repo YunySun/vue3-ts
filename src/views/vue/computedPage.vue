@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: 李昶
  * @Date: 2022-08-05 15:37:20
- * @LastEditors: 李昶
- * @LastEditTime: 2022-08-07 11:37:27
+ * @LastEditors: 虾饺
+ * @LastEditTime: 2023-05-23 14:36:27
  * @Profile: 一个比较废柴的前端开发
 -->
 <template>
@@ -12,10 +12,8 @@
         <div class="author-wrapper">
             <p class="author">{{ author.author }}</p>
             <div class="books">
-                作者写过<template v-for="book in author.books" :key="book"
-                    >《<span class="rst-il">{{ book }}</span
-                    >》 </template
-                >这{{ bookLength }}本小说
+                作者写过<template v-for="book in author.books" :key="book">《<span class="rst-il">{{ book }}</span>》
+                </template>这{{ bookLength }}本小说
             </div>
         </div>
         <h3 class="project__title">写入和读取方法setter getter</h3>
@@ -53,6 +51,7 @@ export default defineComponent({
                 return `${firstName.value} ${lastName.value}`;
             },
             set(val) {
+                console.log(val.split(' '));
                 [firstName.value, lastName.value] = val.split(' ');
             },
         });
